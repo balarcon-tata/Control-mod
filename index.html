@@ -1,0 +1,1122 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="theme-color" content="#111111"/>
+<title>INGENIERÍA | CONTROL — Acceso local</title>
+<style>
+:root{--navy:#12263a;--navy2:#1c354e;--blue:#2463db;--blueBg:#eaf2ff;--text:#172b43;--muted:#697a8e;--line:#e5ebf3;--bg:#f4f7fb;--white:#fff;--green:#18865b;--amber:#bd741c;--red:#c94048;--purple:#7657c7;--radius:15px;--shadow:0 8px 25px rgba(22,45,77,.04)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.55}a{color:var(--blue)}.app{display:flex;min-height:100vh}.side{width:253px;position:sticky;top:0;height:100vh;background:var(--navy);color:#dae5f0;display:flex;flex-direction:column;flex-shrink:0}.brand{padding:26px 21px 23px;display:flex;gap:11px;align-items:center}.brand-logo{width:36px;height:36px;display:grid;place-items:center;color:white;background:var(--blue);border-radius:10px;font-weight:900;letter-spacing:-.5px}.brand strong{display:block;color:white;font-size:13px;letter-spacing:1.1px}.brand small{display:block;font-size:10px;letter-spacing:1.3px;color:#8fa6bc}.nav-section{padding:14px 21px 7px;text-transform:uppercase;font-size:10px;letter-spacing:1.6px;color:#7893ac;font-weight:800}.nav{padding:0 10px;display:grid;gap:4px}.nav button{display:flex;gap:12px;align-items:center;border:0;color:#bfd0df;border-radius:10px;padding:11px 13px;text-align:left;background:transparent;font-weight:560}.nav button svg{height:18px;width:18px;flex-shrink:0}.nav button.active,.nav button:hover{background:#274560;color:#fff}.nav button.active{box-shadow:inset 3px 0 #60a5fa}.side-bottom{margin-top:auto;padding:16px}.side-note{border:1px solid #35516c;border-radius:13px;padding:12px;background:#192f46;font-size:11px;color:#a9bfd4}.side-note strong{display:block;color:white;font-size:12px;margin-bottom:4px}.side-user{display:flex;gap:10px;align-items:center;margin-top:14px;border-top:1px solid #38516b;padding-top:16px}.avatar{background:#dce8ff;color:#2451a6;border-radius:11px;display:grid;place-items:center;width:34px;height:34px;font-weight:800;flex-shrink:0}.side-user b{font-size:12px;color:white}.side-user span{font-size:11px;color:#9bb0c4;display:block}.main-wrap{flex:1;min-width:0}.topbar{height:70px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 32px;position:sticky;top:0;z-index:9}.topbar h1{font-size:17px;margin:0;font-weight:800}.crumb{font-size:12px;color:var(--muted)}.top-actions{display:flex;align-items:center;gap:9px}.content{max-width:1510px;margin:0 auto;padding:28px 32px 60px}.top-select{border:1px solid var(--line);padding:8px;border-radius:10px;background:white;max-width:210px;font-size:12px}.icon-btn{border:1px solid var(--line);background:white;color:var(--text);width:36px;height:36px;display:inline-grid;place-items:center;border-radius:10px}.icon-btn:hover{background:var(--blueBg)}.icon-btn svg{width:17px;height:17px}.hamburger{display:none}.eyebrow{font-size:11px;text-transform:uppercase;color:var(--blue);letter-spacing:1.5px;font-weight:900}.head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;margin-bottom:22px}.head h2{font-size:26px;letter-spacing:-.8px;margin:3px 0 4px}.sub{color:var(--muted);font-size:13px}.actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.btn{background:#fff;border:1px solid #dce5ef;color:var(--text);padding:9px 13px;border-radius:10px;font-weight:680;display:inline-flex;justify-content:center;align-items:center;gap:7px;white-space:nowrap}.btn:hover{background:#f0f5fc}.btn.primary{background:var(--blue);border-color:var(--blue);color:white}.btn.primary:hover{background:#1a53c0}.btn.dark{background:var(--navy);color:white;border-color:var(--navy)}.btn.small{padding:6px 9px;font-size:12px}.btn.danger{color:var(--red);border-color:#f0ced0}.btn svg{width:16px;height:16px}.pill{border-radius:99px;font-size:11px;font-weight:800;padding:4px 9px;display:inline-flex;align-items:center;gap:5px;white-space:nowrap}.pill.blue{background:#e9f1ff;color:#235bc3}.pill.green{background:#e2f5eb;color:#14794b}.pill.amber{background:#fff1dd;color:#a26410}.pill.red{background:#fde9eb;color:#b5323b}.pill.gray{background:#edf1f6;color:#687b91}.pill.purple{background:#f0ebfb;color:#7351ba}.pill.navy{background:#dfe8f2;color:#29425e}.grid{display:grid;gap:16px}.g4{grid-template-columns:repeat(4,minmax(0,1fr))}.g3{grid-template-columns:repeat(3,minmax(0,1fr))}.g2{grid-template-columns:repeat(2,minmax(0,1fr))}.card{background:white;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px;min-width:0}.card + .card{}.card h3{font-size:15px;margin:0;letter-spacing:-.2px}.card-header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}.card-header p{color:var(--muted);font-size:12px;margin:3px 0 0}.metric{min-height:134px;padding:19px}.metric .label{font-size:12px;color:var(--muted);font-weight:600}.metric .value{font-size:31px;font-weight:850;letter-spacing:-1.2px;line-height:1.5}.metric .hint{font-size:11px;color:var(--muted)}.metric .sym{width:31px;height:31px;border-radius:9px;display:grid;place-items:center;background:#eff4fa;float:right}.metric .sym svg{width:17px;height:17px}.section{margin-top:19px}.stack{display:grid;gap:12px}.muted{color:var(--muted)}.mini{font-size:12px}.tiny{font-size:11px}.semibold{font-weight:720}.divider{height:1px;background:var(--line);margin:10px 0}.progress{height:9px;overflow:hidden;background:#eaf0f6;border-radius:99px}.progress>div{height:100%;border-radius:99px;transition:width .2s}.bar-green{background:#21a873}.bar-amber{background:#f0a735}.bar-red{background:#e2555f}.bar-blue{background:#337ce7}.bar-purple{background:#8065c9}.flex{display:flex;align-items:center;gap:9px}.between{display:flex;justify-content:space-between;align-items:center;gap:10px}.wrap{flex-wrap:wrap}.grow{flex:1;min-width:0}.two-columns{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(300px,1fr);gap:16px}.right-col{display:grid;gap:16px;align-content:start}.proj-row{display:grid;gap:8px;padding:12px 0;border-bottom:1px solid var(--line)}.proj-row:last-child{border:0;padding-bottom:0}.project-title{font-weight:760}.clickable{cursor:pointer}.clickable:hover{color:var(--blue)}.task-line{display:flex;gap:10px;align-items:start;padding:12px 0;border-bottom:1px solid var(--line)}.task-line:last-child{border:0}.task-line .mark{height:9px;width:9px;border-radius:50%;margin-top:6px;flex-shrink:0}.task-line b{font-size:12px;display:block}.task-line small{display:block;color:var(--muted);font-size:11px}.task-line .detail{flex:1;min-width:0}.task-line .detail b{overflow-wrap:anywhere}.table-wrap{overflow-x:auto}.data-table{border-collapse:collapse;width:100%;font-size:12px;white-space:nowrap}.data-table th{text-align:left;color:var(--muted);font-weight:750;font-size:11px;background:#f9fbfe;border-bottom:1px solid var(--line);padding:12px}.data-table td{border-bottom:1px solid #edf1f5;padding:12px;vertical-align:middle}.data-table tr:last-child td{border-bottom:0}.data-table tbody tr:hover{background:#fafcff}.data-table .title-cell{font-weight:760;white-space:normal;min-width:200px}.data-table .title-cell small{font-weight:500;color:var(--muted);display:block;margin-top:1px}.filters{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-bottom:16px}.input,select,textarea{border:1px solid #dbe3ed;background:white;border-radius:10px;padding:10px 11px;width:100%;color:var(--text);outline:0}.input:focus,select:focus,textarea:focus{border-color:#7ba9ed;box-shadow:0 0 0 3px #e6f0ff}select{cursor:pointer}.filters .input{max-width:255px}.filters select{max-width:175px}.empty{padding:34px;text-align:center;color:var(--muted);font-size:13px}.empty svg{display:block;margin:0 auto 10px;height:27px;width:27px}.tabs{display:flex;gap:5px;padding:4px;background:#eef2f8;border-radius:11px;width:max-content;max-width:100%;flex-wrap:wrap}.tab{border:0;background:transparent;padding:7px 13px;border-radius:8px;font-weight:730;color:#64788f;font-size:12px}.tab.selected{background:white;color:var(--blue);box-shadow:0 2px 8px #1c2c4515}.kanban{display:grid;grid-template-columns:repeat(5,minmax(200px,1fr));gap:12px;overflow-x:auto;padding-bottom:10px}.kan-col{background:#edf2f8;border-radius:12px;padding:12px;min-height:220px}.kan-card{background:white;border:1px solid #e3eaf3;padding:12px;border-radius:10px;margin:10px 0;box-shadow:0 2px 8px #18304708}.kan-card b{display:block;font-size:12px}.kan-card p{font-size:11px;color:var(--muted);margin:5px 0}.member-row{border:1px solid var(--line);padding:15px;border-radius:12px;display:grid;gap:9px}.member-head{display:flex;justify-content:space-between;align-items:center;gap:10px}.member-head strong{font-size:13px}.member-row .avatar{height:36px;width:36px}.col-tag{height:10px;width:10px;display:inline-block;border-radius:100%;margin-right:6px}.nav-weeks{display:flex;align-items:center;gap:10px}.week-card{padding:12px;border-radius:11px;background:#f5f8fc}.week-card strong{font-size:21px;letter-spacing:-.6px}.week-card small{display:block;color:var(--muted)}.work-matrix{overflow-x:auto}.work-matrix table{border-collapse:separate;border-spacing:0;width:100%;min-width:720px;font-size:12px}.work-matrix th,.work-matrix td{padding:13px 12px;border-bottom:1px solid var(--line);text-align:left}.work-matrix th{color:var(--muted);font-size:11px;background:#f8fbff}.work-matrix td:first-child{font-weight:750}.work-matrix .selected-week{background:#ecf3ff}.chartbar{height:11px;background:#e9eff5;border-radius:7px;overflow:hidden;min-width:70px}.chartbar span{display:block;height:100%;border-radius:7px}.report-bardiv{display:grid;grid-template-columns:125px 1fr 45px;align-items:center;gap:10px;font-size:12px}.report-bardiv .progress{height:13px}.calendar{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));border-left:1px solid var(--line);border-top:1px solid var(--line)}.calendar .dayhead{font-size:11px;font-weight:800;color:var(--muted);text-align:center;padding:10px;background:#f9fbff;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}.calendar .day{min-height:106px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:7px;background:white;min-width:0}.calendar .day.out{background:#fafbfc;color:#a4b1bd}.calendar .day.today{box-shadow:inset 0 0 0 2px #91b9f7}.calendar .date{font-size:11px;font-weight:800;margin-bottom:4px}.cal-item{font-size:10px;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:3px 5px;border-radius:5px;background:#eaf1ff;color:#2759aa;margin-bottom:3px;cursor:pointer}.cal-item.red{background:#fde8e9;color:#a42f39}.cal-item.green{background:#e5f5ed;color:#16734e}.modal-backdrop{position:fixed;inset:0;background:#0b1b30aa;z-index:30;display:flex;align-items:center;justify-content:center;padding:18px;overflow-y:auto}.modal{width:min(740px,100%);max-height:min(92vh,950px);overflow:auto;background:white;border-radius:18px;box-shadow:0 20px 70px #07132266;position:relative}.modal.wide{width:min(980px,100%)}.modal-head{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:2;padding:18px 22px;display:flex;justify-content:space-between;align-items:center;gap:12px}.modal-head h3{font-size:17px;margin:0}.modal-body{padding:22px}.modal-foot{display:flex;justify-content:flex-end;gap:9px;padding:15px 22px;background:#f8fafd;border-top:1px solid var(--line);position:sticky;bottom:0;z-index:2}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.field{display:grid;gap:5px;min-width:0}.field label{font-size:11px;font-weight:800;color:#40546b}.field.wide{grid-column:1/-1}.field small{color:var(--muted)}textarea{resize:vertical;min-height:75px}.checkbox-line{display:flex;align-items:center;gap:8px;font-size:12px}.checkbox-line input{width:auto}.allocation-row{display:grid;grid-template-columns:1fr 1fr auto;gap:8px;align-items:end;margin-bottom:7px}.allocation-row label{font-size:11px;color:var(--muted);display:block;margin-bottom:3px}.allocation-row .btn{height:40px}.modal-note{background:#edf4ff;border:1px solid #d3e4ff;color:#305b94;padding:12px;border-radius:10px;font-size:12px}.callout{background:#fff5e8;border:1px solid #f3dfbb;border-radius:12px;padding:13px;color:#895b22;font-size:12px}.lightbox{background:#f7f9fd;padding:14px;border-radius:11px;border:1px solid var(--line)}.history-line{border-left:2px solid #d5e3f5;padding:0 0 13px 13px;margin-left:4px;font-size:12px}.history-line b{display:block}.history-line span{color:var(--muted);font-size:11px}.toast{position:fixed;right:22px;bottom:22px;z-index:99;background:#17344d;color:#fff;padding:11px 16px;border-radius:11px;box-shadow:0 12px 38px #12263a38;max-width:380px;font-size:12px}.toast.error{background:#a32e38}.demo-banner{border:1px solid #cbdcf9;background:#eef4ff;color:#335f9a;padding:10px 15px;font-size:12px;border-radius:11px;margin-bottom:18px;display:flex;align-items:center;justify-content:space-between;gap:10px}.mini-link{border:none;background:none;color:var(--blue);font-size:12px;font-weight:750;padding:3px;cursor:pointer}.mini-link:hover{text-decoration:underline}.tag{border:1px solid var(--line);padding:4px 8px;border-radius:8px;font-size:11px}.check-icon{color:var(--green)}.print-header{display:none}.mobile-overlay{display:none}
+@media(max-width:1150px){.side{width:225px}.content{padding:23px}.topbar{padding:0 23px}.g4{grid-template-columns:repeat(2,1fr)}.two-columns{grid-template-columns:1fr}.g3{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:760px){.side{position:fixed;z-index:20;left:-265px;transition:left .18s;width:253px}.side.open{left:0}.mobile-overlay.on{display:block;position:fixed;inset:0;background:#0a1b2b99;z-index:19}.hamburger{display:grid}.topbar{height:60px;padding:0 14px}.topbar h1{font-size:14px}.top-actions .top-select{max-width:125px;font-size:11px}.content{padding:19px 14px 50px}.head{flex-direction:column;gap:13px}.head h2{font-size:23px}.g3{grid-template-columns:1fr 1fr}.g2{grid-template-columns:1fr}.card{padding:15px}.metric{min-height:117px;padding:15px}.metric .value{font-size:26px}.form-grid{grid-template-columns:1fr}.field.wide{grid-column:1}.modal-body{padding:16px}.modal-head{padding:14px 16px}.modal-foot{padding:12px 16px}.calendar .day{min-height:68px;padding:3px}.calendar .dayhead{padding:5px}.cal-item{font-size:9px;padding:2px}.filters .input{max-width:none;width:100%}.filters select{max-width:none;flex:1 1 40%}.report-bardiv{grid-template-columns:90px 1fr 34px}.demo-banner{align-items:flex-start;flex-direction:column}}
+@media print{.side,.topbar,.actions,.btn,.demo-banner,.no-print,.icon-btn,.modal-backdrop{display:none!important}.main-wrap,.content{display:block;width:100%;padding:0;background:white}.card{box-shadow:none;break-inside:avoid}.print-header{display:block}body{background:white}}
+
+
+/* Minimal dark editorial redesign — intentionally flat and quiet. */
+:root{
+  color-scheme:dark;
+  --navy:#0b0c0e;--navy2:#101215;
+  --blue:#89b4f4;--blueBg:#1a2534;
+  --text:#f0f2f4;--muted:#929aa5;
+  --line:#2a2d32;--bg:#0b0d10;--white:#141619;
+  --green:#74caaa;--amber:#e5ba73;--red:#ee8990;--purple:#b5a5e1;
+  --radius:12px;--shadow:none;
+}
+html{background:var(--bg)}
+body{
+  color:var(--text);background:var(--bg);
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:14px;line-height:1.55;
+}
+body::before{display:none}
+a{color:var(--blue)}
+.app{position:relative}
+.side{
+  width:244px;background:#090a0c;color:#a6abb4;
+  border-right:1px solid #24272c;box-shadow:none;
+}
+.brand{padding:29px 24px 28px;gap:12px}
+.brand-logo{
+  width:35px;height:35px;border-radius:9px;background:#1c2838;
+  color:#bdd4f9;box-shadow:none;font-size:12px;letter-spacing:-.2px;
+  border:1px solid #304057;
+}
+.brand strong{color:#f2f3f5;font-size:12px;letter-spacing:1.15px;font-weight:770}
+.brand small{color:#808893;font-size:9px;letter-spacing:1.7px}
+.nav-section{color:#69717b;font-size:10px;letter-spacing:1.45px;padding:20px 23px 9px}
+.nav{padding:0 11px;gap:3px}
+.nav button{
+  background:transparent;border:1px solid transparent;color:#a3aab4;
+  border-radius:8px;padding:10px 12px;gap:12px;font-size:13px;
+  font-weight:550;transition:background .15s,color .15s;
+}
+.nav button svg{width:17px;height:17px;opacity:.9}
+.nav button:hover{background:#171a1f;color:#f5f5f6;border-color:transparent}
+.nav button.active{
+  background:#1b1f25;color:#f7f8fa;border:1px solid #2a3038;
+  box-shadow:none;font-weight:670;
+}
+.nav button.active svg{color:#a5c3f1;opacity:1}
+.side-bottom{padding:16px 13px 19px}
+.side-note{
+  background:#101215;border:1px solid #292d33;color:#959ca7;
+  border-radius:10px;padding:13px 12px;font-size:11px;line-height:1.55;
+}
+.side-note strong{color:#dadee4;font-size:11px}
+.side-user{margin-top:17px;border-top:1px solid #24272c;padding:17px 5px 0}
+.side-user b{color:#f4f5f6}.side-user span{color:#818a96}
+.avatar{
+  border:1px solid #384354;border-radius:9px;background:#222b38;
+  color:#c6d7ef;box-shadow:none;
+}
+.topbar{
+  height:72px;background:#0d0f12;border-bottom:1px solid #25292e;
+  backdrop-filter:none;box-shadow:none;padding:0 34px;
+}
+.topbar h1{color:#e3e7eb;font-size:14px;font-weight:690}
+.crumb{color:#7e8997;font-size:10px;letter-spacing:.9px;font-weight:660}
+.top-actions{gap:10px}
+.top-select,.icon-btn{
+  background:#15181c;border:1px solid #2c3036;color:#dce3eb;
+  border-radius:9px;box-shadow:none;
+}
+.top-select{font-size:12px;padding:8px 10px}
+.icon-btn:hover{background:#20242a;border-color:#3b424a;transform:none}
+.content{max-width:1510px;padding:33px 35px 70px}
+.head{margin-bottom:25px;gap:18px}
+.eyebrow{color:#94a5b9;font-size:10px;letter-spacing:1.25px;font-weight:730}
+.head h2{color:#f4f5f7;font-size:28px;letter-spacing:-.9px;font-weight:720;margin:4px 0 3px}
+.sub{font-size:13px;color:var(--muted)}
+.actions{gap:9px}
+.btn{
+  background:#191c20;border:1px solid #30343a;color:#dee4ea;
+  border-radius:9px;box-shadow:none;font-weight:640;padding:9px 13px;
+  transition:background .15s,border-color .15s;
+}
+.btn:hover{background:#23272c;border-color:#414852;transform:none}
+.btn.primary{
+  background:#396dbb;border:1px solid #437ccf;color:#fff;box-shadow:none;
+}
+.btn.primary:hover{background:#447dce;border-color:#5287d6}
+.btn.dark{background:#21252a;color:#f1f4f8;border-color:#30353d}
+.btn.danger{background:#231719;color:#f2aaa9;border-color:#493034}
+.btn.small{font-size:12px}
+.card{
+  background:#141619;border:1px solid #282c31;
+  border-radius:12px;box-shadow:none;padding:22px;
+}
+.card h3{font-weight:690;font-size:14px;color:#eaedf1;letter-spacing:-.15px}
+.card-header{margin-bottom:19px}
+.card-header p{color:var(--muted);font-size:12px}
+.grid{gap:15px}.two-columns,.right-col{gap:15px}
+.metric{min-height:129px;padding:19px 20px;border-color:#2a2e34}
+.metric .label{color:#a1a9b3;font-size:12px;font-weight:570}
+.metric .value{color:#f0f3f6;font-size:30px;line-height:1.45;letter-spacing:-1px;font-weight:720}
+.metric .hint{font-size:11px;color:#828c99}
+.metric .sym{
+  background:transparent;border:0;color:#8994a3;
+  box-shadow:none;width:28px;height:28px;
+}
+.metric .sym svg{height:17px;width:17px;opacity:.84}
+.section{margin-top:16px}
+.divider{background:var(--line)}
+.week-card{
+  padding:13px 14px;background:#1b1e22;border:1px solid #252a2f;
+  border-radius:9px;box-shadow:none;
+}
+.week-card small{color:#98a1ac}
+.week-card strong{color:#edf0f4;font-size:20px;font-weight:700}
+.progress,.chartbar{background:#2a2e32;height:7px;border-radius:99px}
+.progress>div,.chartbar span{border-radius:99px}
+.bar-green{background:#66bea0}.bar-amber{background:#e0ae66}
+.bar-red{background:#e37d85}.bar-blue{background:#789fe2}.bar-purple{background:#aa99d8}
+.task-line,.proj-row{border-bottom-color:var(--line)}
+.task-line b,.project-title{color:#e5e9ee;font-weight:670}
+.task-line small{color:#909aa6}
+.clickable:hover{color:#a9c9f8}
+.data-table th,.work-matrix th{
+  background:#191c20;color:#929ba6;border-bottom:1px solid #30343a;
+  font-size:10px;letter-spacing:.75px;
+}
+.data-table td,.work-matrix td{border-bottom:1px solid #292d32;color:#dfe4e9}
+.data-table tbody tr:hover{background:#1a1e23}
+.data-table .title-cell{font-weight:650;color:#f0f2f4}
+.data-table .title-cell small{color:#88939f}
+.table-wrap,.work-matrix{border-radius:10px}
+.input,select,textarea{
+  background:#101216;color:#edf2f7;border:1px solid #33383f;
+  border-radius:8px;box-shadow:none;
+}
+.input::placeholder,textarea::placeholder{color:#77828e}
+.input:focus,select:focus,textarea:focus,.top-select:focus{
+  border-color:#668ec6;box-shadow:0 0 0 3px rgba(104,148,210,.13);
+}
+.field label{color:#bbc3cd;font-weight:640;font-size:11px}
+.tabs{background:#101317;border:1px solid #2b3036;border-radius:10px;padding:4px}
+.tab{color:#a2aab5;font-weight:620}
+.tab.selected{background:#262b31;color:#f0f3f6;box-shadow:none}
+.kan-col{background:#101316;border:1px solid #262b31;border-radius:11px}
+.kan-card{background:#1b1e23;border:1px solid #333840;border-radius:9px;box-shadow:none}
+.kan-card p{color:#9ea7b1}
+.member-row{background:#16191c;border-color:#2c3036;border-radius:10px}
+.member-head strong{color:#e8edf2}
+.work-matrix th{background:#1b1e22}
+.work-matrix .selected-week{background:#1a2837}
+.pill{padding:4px 9px;border:1px solid transparent;font-size:10px;letter-spacing:.04px;font-weight:700}
+.pill.blue{background:#202e3f;color:#aacaf5;border-color:#2c4059}
+.pill.green{background:#1b302a;color:#99d8bc;border-color:#295043}
+.pill.amber{background:#352b1d;color:#edc891;border-color:#493923}
+.pill.red{background:#392326;color:#f3a6ac;border-color:#513035}
+.pill.gray{background:#272b30;color:#b4bec9;border-color:#343940}
+.pill.purple{background:#2e283b;color:#c6b8e9;border-color:#41384f}
+.pill.navy{background:#242c37;color:#bfd0e5;border-color:#333d4a}
+.calendar{border-color:#2a2e33}
+.calendar .dayhead{background:#191c20;color:#a8b0ba;border-color:#2a2e33}
+.calendar .day{background:#141619;border-color:#2a2e33}
+.calendar .day.out{background:#101214;color:#68727e}
+.calendar .day.today{box-shadow:inset 0 0 0 1px #6489bd}
+.cal-item{background:#233248;color:#bfdaff;border-radius:5px}
+.cal-item.red{background:#412629;color:#ffc1c5}
+.cal-item.green{background:#21382f;color:#a3e8c5}
+.modal-backdrop{background:rgba(0,0,0,.78);backdrop-filter:blur(4px)}
+.modal{
+  background:#15181c;border:1px solid #333941;
+  border-radius:13px;box-shadow:0 30px 75px rgba(0,0,0,.55);
+}
+.modal-head,.modal-foot{background:#15181c;border-color:#30353b}
+.modal-head h3{color:#f3f5f7;font-weight:700}
+.modal-note{
+  background:#1a2533;border:1px solid #2b3a4d;color:#a8c4e8;
+  border-radius:9px;
+}
+.callout{
+  background:#2c241b;border:1px solid #4d3a25;color:#e7bf89;
+  border-radius:9px;
+}
+.lightbox{background:#1a1e23;border-color:#31373e;border-radius:9px}
+.history-line{border-left-color:#3e4b59}
+.demo-banner{
+  background:#171d25;border:1px solid #303a46;color:#b6c6d9;
+  border-radius:9px;padding:11px 15px;box-shadow:none;
+}
+.demo-banner b{color:#d4e1f0}
+.mini-link{color:#9cbff0}
+.tag{background:#1a1e22;border-color:#363d44;color:#c3ccd6}
+.toast{background:#27323d;color:#fff;box-shadow:0 12px 35px #0007}
+.toast.error{background:#6b3039}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:#101215}
+::-webkit-scrollbar-thumb{background:#353b43;border:2px solid #101215;border-radius:999px}
+::-webkit-scrollbar-thumb:hover{background:#48515c}
+@media(max-width:1150px){.side{width:224px}.content{padding:25px 22px 58px}.topbar{padding:0 22px}}
+@media(max-width:760px){
+  .side{width:244px;left:-265px}
+  .mobile-overlay.on{background:#000b}
+  .content{padding:20px 14px 52px}
+  .topbar{height:62px;padding:0 14px}
+  .head h2{font-size:25px}
+  .card{padding:17px}
+  .metric{min-height:114px;padding:16px}
+  .metric .value{font-size:26px}
+  .modal-body{padding:17px}
+}
+@media print{
+  :root{color-scheme:light;--text:#141a21;--muted:#505b69;--line:#dce2e9;--bg:#fff}
+  body,.main-wrap,.content{background:#fff!important;color:#111!important}
+  .card,.week-card,.member-row{background:#fff!important;color:#111!important;border-color:#ddd!important}
+  .card h3,.metric .value,.metric .label,.head h2,.week-card strong,.project-title,.task-line b,.data-table td{color:#111!important}
+  .data-table th{background:#f5f6f8!important;color:#444!important}
+}
+
+
+/* INGENIERÍA | CONTROL — Obsidian premium design system.
+   Presentation only: existing data model and application logic are untouched. */
+:root{
+  color-scheme:dark;
+  --navy:#090a0c;--navy2:#111316;
+  --blue:#9dbff0;--blueBg:#202b39;
+  --text:#f2f1ee;--muted:#989da5;
+  --line:#292d32;--bg:#0b0c0e;--white:#141619;
+  --green:#7ccdb0;--amber:#e5bd81;--red:#ed9398;--purple:#b4a3e4;
+  --radius:14px;--shadow:0 8px 28px rgba(0,0,0,.09);
+}
+html{background:var(--bg)}
+body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.57;letter-spacing:-.08px;-webkit-font-smoothing:antialiased}
+body::before{display:none}
+::selection{background:#35465c;color:#fff}
+button,input,select,textarea{font:inherit}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{
+  outline:2px solid #afc9ed;outline-offset:2px;
+}
+.side{width:252px;background:#090a0b;border-right:1px solid #24272a;box-shadow:none}
+.brand{padding:35px 24px 29px;gap:13px}
+.brand-logo{width:39px;height:39px;border:1px solid #3b424c;border-radius:10px;background:#1a1e24;color:#f2f1ee;font-size:12px;box-shadow:none;letter-spacing:-.2px}
+.brand strong{font-size:12px;letter-spacing:1.18px;color:#f3f2f0;font-weight:760}
+.brand small{color:#777e88;letter-spacing:2.25px;font-size:9px;margin-top:3px}
+.nav-section{padding:19px 23px 9px;color:#777e87;letter-spacing:1.9px;font-weight:750;font-size:9px}
+.nav{padding:0 12px;gap:4px}
+.nav button{position:relative;padding:11px 13px;gap:13px;border-radius:10px;font-size:12.5px;font-weight:540;color:#aaaeb5;border:1px solid transparent;background:transparent;transition:background .17s ease,color .17s ease,border-color .17s ease}
+.nav button svg{width:17px;height:17px;opacity:.85}
+.nav button:hover{background:#15171a;color:#f2f2f0;border-color:transparent}
+.nav button.active{background:#1b1e22;color:#f5f4f2;border:1px solid #30343a;box-shadow:none;font-weight:670}
+.nav button.active::before{content:"";position:absolute;width:2px;height:19px;background:#e3e0d9;left:-12px;top:50%;transform:translateY(-50%);border-radius:2px}
+.nav button.active svg{color:#e3e0d9}
+.side-bottom{padding:16px 14px 22px}
+.side-note{background:#101214;border:1px solid #292d32;border-radius:11px;padding:14px;color:#8e959f;font-size:11px;line-height:1.6}
+.side-note strong{color:#e3e4e5;font-weight:680;font-size:11px}
+.side-user{margin-top:17px;padding:17px 7px 0;border-top:1px solid #272a2e}
+.side-user b{font-size:12px;color:#ededeb}.side-user span{color:#838992}
+.avatar{background:#292d32;border:1px solid #3b4148;color:#f2f1ee;border-radius:10px}
+.topbar{height:76px;background:rgba(12,13,15,.96);border-bottom:1px solid #26292d;box-shadow:none;padding:0 40px;backdrop-filter:blur(12px)}
+.topbar h1{font-size:14px;font-weight:670;letter-spacing:-.2px;color:#f2f1ee}
+.crumb{font-size:9px;letter-spacing:1.65px;font-weight:750;color:#8f959d;text-transform:uppercase}
+.top-actions{gap:11px}
+.content{max-width:1580px;padding:43px 42px 72px}
+.head{margin-bottom:29px;gap:22px;align-items:flex-start}
+.eyebrow{font-size:10px;color:#aeb3bb;letter-spacing:2px;font-weight:760}
+.head h2{font-size:32px;letter-spacing:-1.25px;font-weight:720;color:#f6f5f3;margin:6px 0 5px;line-height:1.24}
+.sub{color:#9aa0a8;font-size:13px}
+.actions{gap:10px}
+.btn{background:#1c1f23;border:1px solid #353940;border-radius:10px;box-shadow:none;color:#e8e8e5;font-weight:650;padding:10px 15px;transition:background .17s ease,border-color .17s ease,transform .17s ease}
+.btn:hover{background:#282c31;border-color:#50565e;transform:translateY(-1px)}
+.btn.primary{background:#edede9;border-color:#edede9;color:#14171b;box-shadow:none}
+.btn.primary:hover{background:#fff;border-color:#fff;color:#0b0c0e}
+.btn.dark{background:#181a1e;border-color:#373b42;color:#efefed}
+.btn.danger{background:#24191c;color:#f0a8ad;border-color:#56383d}
+.btn.small{padding:7px 11px;font-size:11px}
+.icon-btn,.top-select{border:1px solid #34383e;background:#1a1d21;color:#e1e3e5;box-shadow:none;border-radius:10px}
+.icon-btn:hover{background:#25292e;border-color:#4a5159;transform:none}
+.top-select{padding:9px 12px}
+.card{background:#141619;border:1px solid #2d3035;border-radius:15px;box-shadow:0 12px 32px rgba(0,0,0,.075);padding:24px}
+.card h3{color:#f1f0ee;font-size:14px;font-weight:690;letter-spacing:-.15px}
+.card-header{margin-bottom:20px}
+.card-header p{font-size:12px;color:#9198a2}
+.grid{gap:17px}.two-columns,.right-col{gap:17px}.section{margin-top:18px}
+.metric{min-height:143px;padding:23px 23px 21px;position:relative;overflow:hidden}
+.metric .label{font-size:12px;color:#adb1b9;font-weight:570;letter-spacing:-.05px}
+.metric .value{font-size:36px;line-height:1.25;letter-spacing:-1.45px;font-weight:700;margin-top:8px;font-variant-numeric:tabular-nums}
+.metric .hint{font-size:11px;color:#858d97;margin-top:4px}
+.metric .sym{background:#1c2025;border:1px solid #33383e;width:33px;height:33px;border-radius:10px;color:#bfc4cb;box-shadow:none}
+.metric .sym svg{height:16px;width:16px;opacity:1}
+.week-card{padding:15px 17px;background:#1c1f23;border:1px solid #2c3137;border-radius:11px;box-shadow:none}
+.week-card small{color:#9ca3ad;font-size:11px}
+.week-card strong{font-size:23px;font-weight:670;letter-spacing:-.7px;color:#f2f2f0}
+.divider{background:#2b2f33}
+.progress,.chartbar{background:#30343a;height:7px;border-radius:30px}
+.progress>div,.chartbar span{border-radius:30px}
+.bar-green{background:#85cdb5}.bar-amber{background:#e1b779}.bar-red{background:#dc868f}.bar-blue{background:#96b5e7}.bar-purple{background:#b3a5da}
+.task-line,.proj-row{padding-top:15px;padding-bottom:15px;border-bottom-color:#2b2f33}
+.task-line:last-child,.proj-row:last-child{border-bottom:0}
+.task-line b,.project-title{color:#e9e9e7;font-weight:650}
+.task-line small{color:#9299a2}
+.clickable:hover{color:#c5d8f6}
+.data-table th,.work-matrix th{background:#1b1d21;border-bottom:1px solid #34383e;color:#a2a8af;font-size:10px;letter-spacing:1px;font-weight:750}
+.data-table td,.work-matrix td{border-bottom:1px solid #2d3136;color:#e3e6e7;padding:14px 12px}
+.data-table tbody tr:hover{background:#1b1e22}
+.data-table .title-cell{color:#f0f0ee;font-weight:680}
+.data-table .title-cell small{color:#9097a1}
+.table-wrap,.work-matrix{border-radius:12px}
+.input,select,textarea{background:#101215;color:#f0f0ee;border:1px solid #373c43;border-radius:10px;box-shadow:none}
+.input::placeholder,textarea::placeholder{color:#78818c}
+.input:focus,select:focus,textarea:focus,.top-select:focus{border-color:#9bb8dd;box-shadow:0 0 0 3px rgba(156,187,225,.12)}
+.field label{font-size:11px;color:#c0c5ca;font-weight:670;letter-spacing:.05px}
+.tabs{background:#101215;border:1px solid #2c3035;border-radius:11px;padding:4px}
+.tab{color:#a4abb4;font-weight:600;border-radius:8px}
+.tab.selected{background:#2b2e33;color:#f3f2f0;box-shadow:none}
+.kan-col{background:#101215;border:1px solid #2b2e32;border-radius:12px}
+.kan-card{background:#1b1e22;border:1px solid #343941;border-radius:11px;box-shadow:none}
+.kan-card p{color:#9fa5ae}
+.member-row{background:#181b1e;border:1px solid #30353a;border-radius:12px;padding:17px}
+.member-head strong{color:#f0f0ee}
+.work-matrix th{background:#1d2024}.work-matrix .selected-week{background:#202a37}
+.pill{padding:5px 10px;font-size:10px;font-weight:690;letter-spacing:.03px;border:1px solid transparent}
+.pill.blue{background:#233044;border-color:#344763;color:#bad2f4}
+.pill.green{background:#20352c;border-color:#315042;color:#9bd9bd}
+.pill.amber{background:#383022;border-color:#4f4230;color:#efd19b}
+.pill.red{background:#3b292d;border-color:#5b3c42;color:#f0afb6}
+.pill.gray{background:#2a2e32;border-color:#393e44;color:#c5c8cd}
+.pill.purple{background:#322d40;border-color:#453e55;color:#c9bdeb}
+.pill.navy{background:#2b323b;border-color:#414a56;color:#ccd5e1}
+.calendar{border-color:#2c3035}.calendar .dayhead{background:#1c1f22;color:#adb2ba;border-color:#30343a}
+.calendar .day{background:#15171a;border-color:#30343a}.calendar .day.out{background:#101214;color:#747d87}.calendar .day.today{box-shadow:inset 0 0 0 1px #a9bdda}
+.cal-item{background:#293749;color:#c9ddf9;border-radius:6px}.cal-item.red{background:#452d31;color:#f3bec4}.cal-item.green{background:#243d33;color:#ade8cd}
+.modal-backdrop{background:rgba(0,0,0,.8);backdrop-filter:blur(6px)}
+.modal{background:#15171b;border:1px solid #393d44;border-radius:16px;box-shadow:0 34px 90px rgba(0,0,0,.55)}
+.modal-head,.modal-foot{background:#15171b;border-color:#30353a}
+.modal-head h3{color:#f0f0ed;font-weight:700}.modal-body{padding:25px}
+.modal-note{background:#1c2837;border:1px solid #35445a;color:#c3d7f3;border-radius:10px}
+.callout{background:#33291d;border:1px solid #57432b;color:#f0c68d;border-radius:10px}
+.lightbox{background:#1d2024;border:1px solid #363b42;border-radius:11px}
+.history-line{border-left-color:#4a545f}
+.demo-banner{background:#15191f;border:1px solid #303841;border-radius:11px;color:#adb9c8;padding:12px 16px;box-shadow:none}
+.demo-banner b{color:#e6e9ed}
+.mini-link{color:#bbd4f8}
+.tag{background:#1d2126;border:1px solid #3a4048;color:#c7cbd1}
+.toast{background:#29323c;color:#fff;box-shadow:0 14px 40px rgba(0,0,0,.4)}.toast.error{background:#6c353b}
+::-webkit-scrollbar{width:9px;height:9px}::-webkit-scrollbar-track{background:#101215}::-webkit-scrollbar-thumb{background:#343940;border:2px solid #101215;border-radius:99px}::-webkit-scrollbar-thumb:hover{background:#545a63}
+@media(max-width:1150px){.side{width:225px}.content{padding:27px 24px 62px}.topbar{padding:0 24px}}
+@media(max-width:760px){
+  .side{width:252px;left:-270px}
+  .mobile-overlay.on{background:#000b}
+  .topbar{height:62px;padding:0 14px}
+  .content{padding:25px 15px 56px}
+  .head h2{font-size:27px}
+  .card{padding:18px}
+  .metric{min-height:122px;padding:17px}
+  .metric .value{font-size:30px}
+  .modal-body{padding:17px}
+  .brand{padding:27px 22px 24px}
+}
+@media print{
+  :root{color-scheme:light;--text:#141a21;--muted:#505b69;--line:#dce2e9;--bg:#fff}
+  body,.main-wrap,.content{background:#fff!important;color:#111!important}
+  .card,.week-card,.member-row{background:#fff!important;color:#111!important;border-color:#ddd!important;box-shadow:none!important}
+  .card h3,.metric .value,.metric .label,.head h2,.week-card strong,.project-title,.task-line b,.data-table td{color:#111!important}
+  .data-table th{background:#f5f6f8!important;color:#444!important}
+}
+
+
+/* Reference-inspired flat command-center UI: no boxed IC logo, no ornamental gradients. */
+:root{
+  color-scheme:dark;--navy:#111111;--navy2:#151515;--blue:#a0bddd;
+  --blueBg:#1b232b;--text:#eaeaea;--muted:#888f95;--line:#292929;
+  --bg:#111111;--white:#171717;--green:#64b98c;--amber:#d2a45e;
+  --red:#db7c7e;--purple:#a49ac3;--radius:7px;--shadow:none;
+}
+html{background:#111}body{font-family:Inter,'Segoe UI Variable Text','Segoe UI',ui-sans-serif,system-ui,sans-serif;font-weight:400;letter-spacing:-.18px;background:#111;color:#e9e9e9;font-size:12px;line-height:1.5}
+body::before{display:none}
+.app{min-height:100vh}
+.side{width:213px;background:#141414;border-right:1px solid #242424;box-shadow:none}
+.brand{height:65px;padding:0 18px;gap:10px;border-bottom:1px solid #242424}
+.brand-mark{font-size:24px;line-height:1;color:#c7c9cc;font-weight:300;width:21px;display:grid;place-items:center}
+.brand strong{font-size:11px;font-weight:650;color:#f0f0f0;letter-spacing:.9px}
+.brand small{color:#777e83;font-size:8px;letter-spacing:1.25px;margin-top:1px}
+.nav-section{font-size:8px;color:#60676d;letter-spacing:1.4px;padding:20px 18px 7px;font-weight:600}
+.nav{padding:0 8px;gap:0}
+.nav button{min-height:34px;padding:7px 10px;border:0;border-radius:5px;gap:11px;color:#969a9e;font-size:11px;font-weight:440;letter-spacing:0;transition:background .15s,color .15s}
+.nav button svg{width:15px;height:15px;opacity:.85}
+.nav button.active{background:#1c1d1e;color:#f2f2f2;border:0;box-shadow:none;font-weight:550}
+.nav button.active::before{width:2px;height:19px;left:-8px;background:#e0e0e0}
+.nav button:hover{background:#202020;border:0;color:#f3f3f3}
+.side-bottom{padding:16px 12px 18px}
+.storage-chip{color:#777e85;display:flex;align-items:center;gap:7px;font-size:8px;letter-spacing:.25px;padding:12px 3px;border-top:1px solid #272727}
+.storage-dot{width:5px;height:5px;border-radius:100%;background:#72b18d;flex-shrink:0}
+.side-user{margin-top:3px;padding:12px 3px 0;border-color:#292929}.side-user b{font-size:11px;font-weight:560}.side-user span{font-size:9px;color:#767d84}
+.avatar{width:30px;height:30px;border:1px solid #343434;border-radius:6px;background:#222;color:#e1e1e1;font-weight:500;font-size:10px}
+.topbar{height:65px;background:#141414;border-bottom:1px solid #242424;backdrop-filter:none;box-shadow:none;padding:0 27px}
+.topbar h1{font-weight:550;font-size:12px;letter-spacing:-.1px;color:#e4e4e4}.crumb{font-size:8px;font-weight:450;letter-spacing:1.15px;color:#777d82}.top-actions{gap:8px}
+.content{max-width:1660px;padding:28px 28px 72px}
+.head{align-items:center;margin-bottom:24px;gap:16px}
+.eyebrow{font-size:9px;font-weight:500;letter-spacing:1.2px;color:#83ab92}
+.head h2{font-size:26px;letter-spacing:-.85px;font-weight:550;line-height:1.16;margin:6px 0 4px;color:#eee}
+.sub{font-size:11px;color:#8d9499;letter-spacing:0}
+.btn{border-radius:5px;padding:8px 11px;font-size:10px;font-weight:520;letter-spacing:0;background:#1a1a1a;border:1px solid #303030;color:#b9bdbf;box-shadow:none;transition:background .15s,border .15s;color:#d1d5d8}
+.btn:hover,.icon-btn:hover{background:#222;border-color:#404040;transform:none}
+.btn.primary{background:#dedede;color:#161616;border:1px solid #ddd;box-shadow:none}
+.btn.primary:hover{background:#f4f4f4;color:#111;border-color:#f4f4f4}
+.btn.dark{background:#1b1b1b;border:1px solid #393939;color:#eee}
+.btn.small{padding:5px 8px;font-size:9px;font-weight:490}
+.btn svg{width:13px;height:13px}
+.icon-btn,.top-select{border:1px solid #303030;border-radius:5px;background:#1a1a1a;color:#b8bcc0;box-shadow:none}.icon-btn{width:31px;height:31px}.icon-btn svg{width:15px;height:15px}
+.top-select{font-size:10px;padding:6px 9px;max-width:175px}
+.card{background:#171717;border:1px solid #292929;border-radius:7px;padding:17px;box-shadow:none}
+.card h3{font-size:11.5px;line-height:1.35;font-weight:560;letter-spacing:-.15px;color:#d9d9d9}
+.card-header{margin-bottom:15px;align-items:start}
+.card-header p{font-size:10px;color:#797f84;margin-top:4px}
+.card-header h3 svg{width:13px;height:13px;vertical-align:-2px;margin-right:5px;color:#989e9f}
+.grid,.two-columns,.right-col{gap:10px}.section{margin-top:12px}
+.metric{min-height:125px;padding:14px 16px 10px;background:#171717;overflow:hidden}
+.metric-top{display:flex;justify-content:space-between;align-items:start;gap:8px}
+.metric .label{font-size:10.5px;color:#aeb1b3;font-weight:420;letter-spacing:0}
+.metric .sym{float:none;width:24px;height:24px;border-radius:5px;background:#202020;border:1px solid #282828;color:#aaa!important}
+.metric .sym svg{height:13px;width:13px;opacity:1}
+.metric .value{font-size:28px;line-height:1.22;font-weight:570;letter-spacing:-1px;margin:7px 0 10px;color:#ececec;font-variant-numeric:tabular-nums}
+.metric-footer{border-top:1px solid #292929;padding-top:8px;display:flex;align-items:center;gap:7px}
+.status-led{width:5px;height:5px;background:#70ad84;border-radius:99px;flex-shrink:0}
+.metric .hint{font-size:9px;color:#898f93;margin:0}
+.metric .hint::first-letter{text-transform:uppercase}
+.executive-main{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.executive-panel{min-height:215px;display:flex;flex-direction:column;padding:15px 16px}
+.executive-panel .card-header{margin-bottom:14px}
+.executive-panel .card-header h3{display:flex;align-items:center;gap:4px}
+.executive-panel .card-header h3 svg{margin:0}
+.capacity-numbers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:7px;margin-bottom:19px}
+.capacity-numbers>div{min-width:0}.capacity-numbers span{display:block;color:#838b91;font-size:9px;margin-bottom:5px}
+.capacity-numbers strong{color:#e5e5e5;font-size:19px;font-weight:550;letter-spacing:-.55px;white-space:nowrap}
+.tone-green{color:#82c6a0!important}.tone-red{color:#e79a9c!important}
+.panel-foot{margin-top:auto;padding-top:13px;display:flex;align-items:center;justify-content:space-between;gap:10px;color:#777f85;font-size:9px}
+.panel-foot .btn{border:0;background:transparent;padding:2px 0;color:#b4bec6}
+.panel-foot .btn:hover{color:#fff;background:transparent}
+.executive-task-list{min-height:94px;max-height:158px;overflow:auto}
+.executive-task-list .task-line{padding:6px 0;gap:7px}
+.executive-task-list .task-line b{font-size:10px;font-weight:510;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.executive-task-list .task-line small{font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.executive-task-list .task-line .mark{width:5px;height:5px;margin-top:5px}
+.executive-task-list .pill{display:none}
+.panel-empty{display:grid;place-items:center;min-height:94px;text-align:center;font-size:10px;color:#838a8f}
+.status-section{padding-top:3px}.status-header{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px;color:#777e82;font-size:9px;letter-spacing:.8px}
+.all-good{font-size:8px;color:#88bb9c;letter-spacing:.1px}.all-good svg{height:11px;width:11px;vertical-align:-2px}
+.health-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.health-tile{background:#171717;border:1px solid #292929;border-radius:6px;padding:10px 12px;min-width:0}
+.health-title{display:flex;align-items:center;justify-content:space-between;gap:7px;color:#90979a;font-size:9px}
+.health-light{width:5px;height:5px;border-radius:100%;flex-shrink:0}.health-light.green,.health-progress .green{background:#6eb58a}.health-light.amber,.health-progress .amber{background:#cfa25f}.health-light.red,.health-progress .red{background:#cb7b7f}
+.health-tile strong{display:block;font-size:18px;line-height:1.2;font-weight:530;color:#e8e8e8;letter-spacing:-.6px;margin:6px 0}
+.health-progress{height:2px;background:#292929;border-radius:99px}.health-progress>span{display:block;height:2px;border-radius:99px}
+.executive-detail{margin-top:28px;grid-template-columns:1fr 1fr}
+.member-load{padding:3px 0}.member-load .progress{margin-top:6px}
+.progress,.chartbar{height:4px;background:#292929;border-radius:9px}.progress>div,.chartbar span{border-radius:9px}
+.bar-green{background:#6fb78a}.bar-amber{background:#d2a45e}.bar-red{background:#ca777b}.bar-blue{background:#8faabe}.bar-purple{background:#a49ac3}
+.task-line,.proj-row{border-bottom-color:#292929}.task-line b,.project-title{font-weight:540;color:#dcdcdc}.task-line small{color:#7c858d}.clickable:hover{color:#e8e8e8}
+.week-card,.member-row,.kan-card,.kan-col,.lightbox{border-radius:6px;box-shadow:none}
+.week-card{background:#1b1b1b;border:1px solid #292929}.week-card strong{font-size:18px;color:#eee;font-weight:540}.week-card small{font-size:9px}
+.member-row{background:#191919;border:1px solid #2c2c2c}.member-head strong{font-weight:550}
+.kan-col{background:#141414;border:1px solid #272727}.kan-card{background:#1b1b1b;border-color:#2f2f2f}
+.tabs{border-radius:6px;background:#1a1a1a;border-color:#2c2c2c}.tab{border-radius:4px;font-size:10px;font-weight:500;padding:7px 11px}.tab.selected{background:#303030;color:#f4f4f4}
+.data-table th,.work-matrix th{background:#1a1a1a;color:#979da1;border-color:#303030;font-size:9px;letter-spacing:.65px;font-weight:550}
+.data-table td,.work-matrix td{border-color:#292929;color:#d3d5d6;font-size:11px}.data-table tbody tr:hover{background:#202020}.data-table .title-cell{font-weight:550;color:#e4e4e4}
+.input,select,textarea{background:#171717;border-color:#363636;border-radius:5px;color:#eee;font-size:11px}
+.input:focus,select:focus,textarea:focus,.top-select:focus{border-color:#8d9b9d;box-shadow:0 0 0 2px rgba(160,170,170,.13)}
+.field label{color:#aeb4b7;font-weight:550;font-size:10px}
+.pill{font-size:9px;font-weight:550;border-radius:4px;padding:3px 6px;letter-spacing:0}
+.pill.blue{background:#212b31;border-color:#2c414a;color:#aac5d0}.pill.green{background:#1b2d23;border-color:#2e4638;color:#9accaa}
+.pill.amber{background:#2d271d;border-color:#443723;color:#d9bd89}.pill.red{background:#332325;border-color:#4f3337;color:#dfacb0}
+.pill.gray{background:#252525;border-color:#333;color:#a9adb0}.pill.purple{background:#2c2832;border-color:#3f3947;color:#c1b5ce}.pill.navy{background:#262a2e;border-color:#343b40;color:#c2c8cd}
+.demo-banner{background:#1a1a1a;border-color:#2b2b2b;color:#9ba2a7;border-radius:5px;padding:9px 13px;font-size:10px;margin-bottom:14px}
+.demo-banner b{color:#d0d3d5}.mini-link{color:#c0c7ca;font-size:10px}
+.modal-backdrop{background:rgba(0,0,0,.8)}.modal{background:#191919;border:1px solid #383838;border-radius:8px;box-shadow:0 30px 80px #000a}.modal-head,.modal-foot{background:#191919;border-color:#303030}
+.modal-note{background:#202529;border-color:#303b42;color:#b4c2cb}.callout{background:#29251d;border-color:#493d2b;color:#dbc39c}.lightbox{background:#202020;border-color:#313131}
+.calendar .dayhead{background:#1b1b1b}.calendar .day{background:#181818}.calendar .day.out{background:#151515}.calendar .day.today{box-shadow:inset 0 0 0 1px #667875}.cal-item{background:#252d30;color:#adc3ce}
+@media(max-width:1150px){.side{width:190px}.content{padding:25px 21px 55px}.topbar{padding:0 21px}.executive-main{grid-template-columns:repeat(2,minmax(0,1fr))}.executive-main .executive-panel:last-child{grid-column:1/-1}.health-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:760px){.side{width:245px;left:-265px}.brand{height:63px}.topbar{height:58px;padding:0 13px}.content{padding:19px 13px 55px}.head{align-items:flex-start}.head h2{font-size:25px}.grid.g4{grid-template-columns:repeat(2,minmax(0,1fr))}.metric{min-height:113px;padding:12px}.metric .value{font-size:26px}.executive-main{grid-template-columns:1fr}.executive-main .executive-panel:last-child{grid-column:auto}.health-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.executive-detail{grid-template-columns:1fr}.capacity-numbers strong{font-size:18px}.topbar h1{font-size:11px}}
+@media print{body,.main-wrap,.content{background:#fff!important;color:#111!important}.card,.health-tile,.week-card{background:#fff!important;border-color:#ddd!important;color:#111!important}.metric .value,.health-tile strong,.head h2{color:#111!important}}
+
+
+/* Preparación inicial — sin registros precargados */
+.setup-card{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:18px;padding:22px 23px;border-color:#293241}
+.setup-card h3{font-size:18px;margin:5px 0 3px;font-weight:650;letter-spacing:-.35px}
+.setup-card p{margin:0;color:var(--muted);font-size:12px;max-width:610px}
+.setup-card .actions{justify-content:flex-end}
+@media(max-width:900px){.setup-card{flex-direction:column;align-items:flex-start}.setup-card .actions{justify-content:flex-start}}
+
+/* Users + backend-ready preparation */
+.account-notice{margin:0 0 16px;padding:15px 18px;border:1px solid #303a43;background:#11161b;color:#acbacb;line-height:1.7;border-radius:12px}
+.account-notice b{color:#f0f4f7}
+[data-action="preview-member"]{border-color:#293e50}
+[data-action="exit-preview"]{border-color:#5c7391;background:#111b24;color:#d9e9ff}
+@media(max-width:760px){.account-notice{font-size:12px}.top-actions [data-action="exit-preview"]{font-size:10px;white-space:normal;max-width:120px}}
+
+/* Preparation for enterprise accounts, no real login until backend exists. */
+.migration-callout{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:16px 20px;border:1px solid #38475b;background:#101820}
+.migration-callout b{color:#f2f5fa}.migration-callout p{margin:6px 0 0;max-width:690px}
+.outlook-plan{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.outlook-plan>div{border:1px solid #2b3038;padding:16px;border-radius:11px;background:#131517}
+.outlook-plan b{font-size:12px;display:block;margin:8px 0}.outlook-plan p{color:#9faab9;font-size:12px;margin:0;line-height:1.55}
+.plan-index{color:#8aa9ca;font-size:11px;letter-spacing:.1em;font-weight:700}
+@media(max-width:850px){.outlook-plan{grid-template-columns:1fr}.migration-callout{align-items:flex-start;flex-direction:column}}
+
+
+/* ===== Acceso local sin instalación ===== */
+.auth-screen{min-height:100vh;background:#090a0c;color:#f2f4f7;display:grid;place-items:center;padding:24px;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.auth-panel{width:min(430px,100%);background:#111317;border:1px solid #282d34;border-radius:14px;padding:34px;box-shadow:0 24px 70px rgba(0,0,0,.42)}
+.auth-brand{font-size:11px;letter-spacing:2.4px;color:#9ba5b3;font-weight:800}.auth-rule{height:1px;background:#292e35;margin:22px 0 26px}.auth-panel h1{font-size:27px;line-height:1.15;letter-spacing:-.8px;margin:0 0 9px;color:#fff}.auth-panel p{color:#939daa;font-size:13px;line-height:1.6;margin:0}.auth-panel label{display:block;color:#cbd2dc;font-size:11px;font-weight:700;margin:19px 0 7px}.auth-panel input{width:100%;background:#0b0d10;border:1px solid #343a43;border-radius:9px;color:#f4f7fa;padding:12px 13px;outline:0}.auth-panel input:focus{border-color:#7c98bd;box-shadow:0 0 0 3px rgba(124,152,189,.12)}.auth-submit{width:100%;border:0;border-radius:9px;padding:12px 14px;margin-top:22px;background:#f0f1ef;color:#0b0d10;font-weight:800;cursor:pointer}.auth-submit:hover{background:#fff}.auth-error{color:#ff979e!important;min-height:18px;margin-top:13px!important;font-size:12px!important}.auth-foot{margin-top:22px!important;text-align:center;color:#6f7885!important;font-size:10px!important}.auth-actions{display:flex;gap:8px;margin-top:14px}.auth-chip{display:inline-flex;align-items:center;gap:6px;border:1px solid #31363e;background:#171a1f;color:#aeb8c5;border-radius:999px;padding:5px 9px;font-size:10px;font-weight:700}.auth-dot{width:6px;height:6px;border-radius:50%;background:#79c99f}.sidebar-account-actions{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:11px}.sidebar-account-actions .btn{font-size:10px;padding:7px 8px}.local-security-note{border:1px solid #343941;background:#171a1f;border-radius:9px;padding:10px 11px;color:#9da7b4;font-size:11px;line-height:1.5}.login-meta{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:12px;flex-wrap:wrap}
+
+</style>
+
+<style id="theme-palette-overrides">
+html[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0d141c;
+  --bg-soft:#111b25;
+  --surface:#16222e;
+  --surface-2:#1b2b39;
+  --surface-3:#23384b;
+  --surface-4:#0f1a24;
+  --side-bg:#0d1721;
+  --topbar-bg:rgba(13,23,33,.96);
+  --white:#16222e;
+  --text:#ecf2f8;
+  --muted:#9fb1c4;
+  --line:#284052;
+  --blue:#72a8ff;
+  --blue-strong:#5b93f0;
+  --blueBg:#16314d;
+  --green:#5ec4a1;
+  --amber:#efc06b;
+  --red:#ee8f93;
+  --purple:#b8a1ee;
+  --radius:14px;
+  --shadow:0 16px 40px rgba(3,10,18,.28);
+}
+html[data-theme="light"]{
+  color-scheme:light;
+  --bg:#eef3f8;
+  --bg-soft:#f6f9fc;
+  --surface:#ffffff;
+  --surface-2:#f8fbff;
+  --surface-3:#edf4fb;
+  --surface-4:#ffffff;
+  --side-bg:#f4f8fc;
+  --topbar-bg:rgba(255,255,255,.94);
+  --white:#ffffff;
+  --text:#163040;
+  --muted:#5f7387;
+  --line:#d7e3ef;
+  --blue:#2c6fdb;
+  --blue-strong:#1f5fc7;
+  --blueBg:#e8f1ff;
+  --green:#19895f;
+  --amber:#bd7a20;
+  --red:#c84c57;
+  --purple:#7a5fcb;
+  --radius:14px;
+  --shadow:0 16px 34px rgba(22,48,74,.08);
+}
+html[data-theme]{background:var(--bg)}
+html[data-theme] body{
+  background:linear-gradient(180deg,var(--bg) 0%, var(--bg-soft) 100%) fixed!important;
+  color:var(--text)!important;
+}
+html[data-theme] .side{
+  background:linear-gradient(180deg,var(--side-bg) 0%, var(--surface-4) 100%)!important;
+  border-right:1px solid var(--line)!important;
+}
+html[data-theme] .brand-logo,
+html[data-theme] .brand-mark{
+  color:var(--blue)!important;
+}
+html[data-theme="light"] .brand strong,
+html[data-theme="light"] .topbar h1,
+html[data-theme="light"] .head h2,
+html[data-theme="light"] .card h3,
+html[data-theme="light"] .metric .value,
+html[data-theme="light"] .project-title,
+html[data-theme="light"] .task-line b,
+html[data-theme="light"] .member-head strong,
+html[data-theme="light"] .week-card strong,
+html[data-theme="light"] .modal-head h3,
+html[data-theme="light"] .auth-panel h1{color:var(--text)!important}
+html[data-theme="light"] .brand small,
+html[data-theme="light"] .crumb,
+html[data-theme="light"] .nav-section,
+html[data-theme="light"] .sub,
+html[data-theme="light"] .muted,
+html[data-theme="light"] .task-line small,
+html[data-theme="light"] .data-table .title-cell small,
+html[data-theme="light"] .card-header p,
+html[data-theme="light"] .metric .hint,
+html[data-theme="light"] .metric .label,
+html[data-theme="light"] .auth-panel p,
+html[data-theme="light"] .auth-foot,
+html[data-theme="light"] .side-user span,
+html[data-theme="light"] .side-note,
+html[data-theme="light"] .outlook-plan p,
+html[data-theme="light"] .storage-chip,
+html[data-theme="light"] .data-table th,
+html[data-theme="light"] .work-matrix th,
+html[data-theme="light"] .calendar .dayhead,
+html[data-theme="light"] .calendar .day.out,
+html[data-theme="light"] .empty,
+html[data-theme="light"] .status-header,
+html[data-theme="light"] .health-title,
+html[data-theme="light"] .panel-empty{color:var(--muted)!important}
+html[data-theme] .topbar{
+  background:var(--topbar-bg)!important;
+  border-bottom:1px solid var(--line)!important;
+  box-shadow:0 10px 24px rgba(8,20,33,.06)!important;
+}
+html[data-theme] .content,
+html[data-theme] .main-wrap{background:transparent!important}
+html[data-theme] .card,
+html[data-theme] .week-card,
+html[data-theme] .member-row,
+html[data-theme] .kan-col,
+html[data-theme] .kan-card,
+html[data-theme] .modal,
+html[data-theme] .lightbox,
+html[data-theme] .demo-banner,
+html[data-theme] .migration-callout,
+html[data-theme] .outlook-plan>div,
+html[data-theme] .side-note,
+html[data-theme] .account-notice,
+html[data-theme] .auth-panel,
+html[data-theme] .local-security-note,
+html[data-theme] .calendar .day,
+html[data-theme] .calendar,
+html[data-theme] .data-table th,
+html[data-theme] .work-matrix th,
+html[data-theme] .data-table tbody tr:hover,
+html[data-theme] .tabs,
+html[data-theme] .tag,
+html[data-theme] .modal-head,
+html[data-theme] .modal-foot,
+html[data-theme] .callout,
+html[data-theme] .modal-note,
+html[data-theme] .auth-chip{
+  background:var(--surface)!important;
+  border-color:var(--line)!important;
+  box-shadow:var(--shadow)!important;
+}
+html[data-theme="light"] .data-table th,
+html[data-theme="light"] .work-matrix th,
+html[data-theme="light"] .calendar .dayhead,
+html[data-theme="light"] .tabs,
+html[data-theme="light"] .week-card,
+html[data-theme="light"] .kan-col,
+html[data-theme="light"] .auth-chip,
+html[data-theme="light"] .side-note,
+html[data-theme="light"] .demo-banner,
+html[data-theme="light"] .lightbox,
+html[data-theme="light"] .modal-note,
+html[data-theme="light"] .callout,
+html[data-theme="light"] .migration-callout,
+html[data-theme="light"] .outlook-plan>div{background:var(--surface-2)!important}
+html[data-theme] .data-table td,
+html[data-theme] .work-matrix td,
+html[data-theme] .proj-row,
+html[data-theme] .task-line,
+html[data-theme] .history-line,
+html[data-theme] .calendar .day,
+html[data-theme] .calendar .dayhead,
+html[data-theme] .member-row,
+html[data-theme] .modal-head,
+html[data-theme] .modal-foot,
+html[data-theme] .status-section,
+html[data-theme] .health-tile{
+  border-color:var(--line)!important;
+}
+html[data-theme] .status-section,
+html[data-theme] .health-tile,
+html[data-theme] .executive-panel,
+html[data-theme] .setup-card{
+  background:var(--surface)!important;
+  box-shadow:var(--shadow)!important;
+}
+html[data-theme] .icon-btn,
+html[data-theme] .top-select,
+html[data-theme] .btn,
+html[data-theme] .input,
+html[data-theme] select,
+html[data-theme] textarea,
+html[data-theme] .auth-panel input,
+html[data-theme] .auth-submit{
+  border-color:var(--line)!important;
+  border-radius:10px!important;
+}
+html[data-theme] .icon-btn,
+html[data-theme] .top-select,
+html[data-theme] .btn,
+html[data-theme] .input,
+html[data-theme] select,
+html[data-theme] textarea,
+html[data-theme] .auth-panel input,
+html[data-theme] .local-security-note{
+  background:var(--surface-2)!important;
+  color:var(--text)!important;
+}
+html[data-theme] .btn:hover,
+html[data-theme] .icon-btn:hover{
+  background:var(--surface-3)!important;
+  border-color:color-mix(in srgb, var(--line) 60%, var(--blue) 40%)!important;
+}
+html[data-theme] .btn.primary,
+html[data-theme] .auth-submit{
+  background:linear-gradient(135deg,var(--blue) 0%, var(--blue-strong) 100%)!important;
+  border-color:transparent!important;
+  color:#fff!important;
+  box-shadow:0 10px 20px rgba(44,111,219,.22)!important;
+}
+html[data-theme] .btn.primary:hover,
+html[data-theme] .auth-submit:hover{
+  filter:brightness(1.04);
+}
+html[data-theme] .btn.dark{
+  background:var(--surface-3)!important;
+  color:var(--text)!important;
+}
+html[data-theme] .btn.danger{
+  background:color-mix(in srgb, var(--red) 12%, var(--surface) 88%)!important;
+  color:var(--red)!important;
+}
+html[data-theme] .nav button:hover,
+html[data-theme] .nav button.active{
+  background:color-mix(in srgb, var(--blue) 16%, var(--surface) 84%)!important;
+  color:var(--text)!important;
+  border-color:color-mix(in srgb, var(--blue) 30%, var(--line) 70%)!important;
+}
+html[data-theme] .nav button.active svg{color:var(--blue)!important}
+html[data-theme] .tabs{padding:4px!important}
+html[data-theme] .tab{color:var(--muted)!important}
+html[data-theme] .tab.selected{
+  background:var(--surface-3)!important;
+  color:var(--text)!important;
+  box-shadow:none!important;
+}
+html[data-theme] .input:focus,
+html[data-theme] select:focus,
+html[data-theme] textarea:focus,
+html[data-theme] .top-select:focus,
+html[data-theme] .auth-panel input:focus{
+  border-color:var(--blue)!important;
+  box-shadow:0 0 0 3px color-mix(in srgb, var(--blue) 18%, transparent)!important;
+}
+html[data-theme] .progress,
+html[data-theme] .chartbar,
+html[data-theme] .health-progress{background:color-mix(in srgb, var(--line) 70%, transparent)!important}
+html[data-theme] .bar-blue{background:var(--blue)!important}
+html[data-theme] .bar-green{background:var(--green)!important}
+html[data-theme] .bar-amber{background:var(--amber)!important}
+html[data-theme] .bar-red{background:var(--red)!important}
+html[data-theme] .bar-purple{background:var(--purple)!important}
+html[data-theme] .pill.blue,
+html[data-theme] .cal-item{background:color-mix(in srgb, var(--blue) 18%, var(--surface) 82%)!important;color:var(--blue)!important;border-color:color-mix(in srgb, var(--blue) 30%, var(--line) 70%)!important}
+html[data-theme] .pill.green,
+html[data-theme] .cal-item.green{background:color-mix(in srgb, var(--green) 18%, var(--surface) 82%)!important;color:var(--green)!important;border-color:color-mix(in srgb, var(--green) 35%, var(--line) 65%)!important}
+html[data-theme] .pill.amber{background:color-mix(in srgb, var(--amber) 20%, var(--surface) 80%)!important;color:var(--amber)!important;border-color:color-mix(in srgb, var(--amber) 35%, var(--line) 65%)!important}
+html[data-theme] .pill.red,
+html[data-theme] .cal-item.red{background:color-mix(in srgb, var(--red) 18%, var(--surface) 82%)!important;color:var(--red)!important;border-color:color-mix(in srgb, var(--red) 35%, var(--line) 65%)!important}
+html[data-theme] .pill.gray{background:color-mix(in srgb, var(--muted) 12%, var(--surface) 88%)!important;color:var(--muted)!important;border-color:var(--line)!important}
+html[data-theme] .pill.purple{background:color-mix(in srgb, var(--purple) 18%, var(--surface) 82%)!important;color:var(--purple)!important;border-color:color-mix(in srgb, var(--purple) 35%, var(--line) 65%)!important}
+html[data-theme] .pill.navy{background:color-mix(in srgb, var(--blue) 11%, var(--surface) 89%)!important;color:var(--text)!important;border-color:var(--line)!important}
+html[data-theme] .metric .sym,
+html[data-theme] .storage-dot,
+html[data-theme] .status-led,
+html[data-theme] .health-light.green{color:var(--blue)!important}
+html[data-theme] .auth-screen{
+  background:radial-gradient(circle at top right, color-mix(in srgb, var(--blue) 12%, transparent) 0, transparent 38%),
+             linear-gradient(180deg,var(--bg) 0%, var(--bg-soft) 100%)!important;
+  color:var(--text)!important;
+}
+html[data-theme] .auth-rule{background:var(--line)!important}
+html[data-theme="light"] .avatar{
+  background:var(--blueBg)!important;
+  color:var(--blue)!important;
+  border:1px solid var(--line)!important;
+}
+html[data-theme="dark"] .avatar{
+  background:var(--surface-3)!important;
+  color:#fff!important;
+  border:1px solid var(--line)!important;
+}
+html[data-theme] .theme-toggle{
+  min-width:130px;
+  justify-content:center;
+}
+html[data-theme] .theme-toggle svg{opacity:.95}
+html[data-theme="light"] .side-user b,
+html[data-theme="light"] .brand strong,
+html[data-theme="light"] .nav button.active,
+html[data-theme="light"] .nav button:hover,
+html[data-theme="light"] .nav button{color:var(--text)!important}
+html[data-theme="light"] .top-actions .auth-chip,
+html[data-theme="light"] .storage-chip,
+html[data-theme="light"] .side-bottom,
+html[data-theme="light"] .side{box-shadow:inset -1px 0 0 var(--line), 16px 0 28px rgba(23,48,73,.03)!important}
+html[data-theme="light"] .status-header .all-good,
+html[data-theme="light"] .health-tile strong,
+html[data-theme="light"] .capacity-numbers strong,
+html[data-theme="light"] .panel-foot,
+html[data-theme="light"] .data-table td,
+html[data-theme="light"] .work-matrix td,
+html[data-theme="light"] .calendar .day,
+html[data-theme="light"] .tag,
+html[data-theme="light"] .mini-link,
+html[data-theme="light"] .demo-banner b{color:var(--text)!important}
+html[data-theme="light"] .calendar .day.today{box-shadow:inset 0 0 0 1px var(--blue)!important}
+html[data-theme] ::-webkit-scrollbar-thumb{background:color-mix(in srgb, var(--muted) 45%, var(--surface) 55%)!important;border-color:var(--surface)!important}
+html[data-theme] ::-webkit-scrollbar-track{background:var(--bg)!important}
+</style>
+
+</head>
+<body><div id="app"></div><div id="modals"></div><div id="toasts"></div><input type="file" id="backupFile" accept="application/json,.json" hidden/>
+<script>
+(()=>{'use strict';
+const KEY='ingenieria-control-command-center-clean-v1';
+const iso=d=>{let x=new Date(d);return `${x.getFullYear()}-${String(x.getMonth()+1).padStart(2,'0')}-${String(x.getDate()).padStart(2,'0')}`};
+const date=s=>{if(!s)return new Date();let [y,m,d]=s.split('-').map(Number);return new Date(y,m-1,d)};
+const shift=(s,n)=>{let d=date(s);d.setDate(d.getDate()+n);return iso(d)};
+const monday=s=>{let d=date(s);d.setDate(d.getDate()-((d.getDay()+6)%7));return iso(d)};
+const today=()=>iso(new Date());const weekToday=()=>monday(today());
+const uid=p=>p+Math.random().toString(36).slice(2,9);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt=s=>s?date(s).toLocaleDateString('es-GT',{day:'2-digit',month:'short',year:'numeric'}):'Sin fecha';
+const compact=s=>s?date(s).toLocaleDateString('es-GT',{day:'2-digit',month:'short'}):'—';
+const niceWeek=w=>`${compact(w)} – ${compact(shift(w,6))}`;
+const n=v=>Number(v)||0;const integer=v=>Math.round(n(v)*10)/10;const money=v=>n(v).toLocaleString('es-GT',{maximumFractionDigits:2});
+const statuses=['Por iniciar','En proceso','Bloqueado','En validación','Finalizado'];
+const priorities=['P1','P2','P3','P4'];
+const prioLabel={P1:'Crítica',P2:'Alta',P3:'Media',P4:'Baja'};
+const areas=['Ingeniería','Producción','Calidad','Mantenimiento','Compras','IT','Planeación','Otro'];
+const categories=['Proyecto de mejora','Soporte a producción','Solicitud de otra área','Actividad recurrente'];
+const paths={dashboard:'<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>',my:'<path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>',tasks:'<rect x="3" y="5" width="18" height="15" rx="2"/><path d="M7 10h10M7 14h7"/>',projects:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4"/>',team:'<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>',calendar:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/>',meetings:'<path d="M8 3h8l5 5v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h4zM16 3v5h5M8 13h8M8 17h8"/>',reports:'<path d="M3 3v18h18M7 17v-5M12 17V7M17 17v-8"/>',settings:'<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06-1.91 1.91-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.52V21h-2.7v-.08A1.65 1.65 0 0 0 11 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06-1.91-1.91.06-.06A1.65 1.65 0 0 0 7.6 16a1.65 1.65 0 0 0-1.52-1H6v-2.7h.08A1.65 1.65 0 0 0 7.6 11a1.65 1.65 0 0 0-.33-1.82l-.06-.06 1.91-1.91.06.06A1.65 1.65 0 0 0 11 7.6a1.65 1.65 0 0 0 1-1.52V6h2.7v.08A1.65 1.65 0 0 0 16 7.6a1.65 1.65 0 0 0 1.82-.33l.06-.06 1.91 1.91-.06.06A1.65 1.65 0 0 0 19.4 11a1.65 1.65 0 0 0 1.52 1H21v2.7h-.08A1.65 1.65 0 0 0 19.4 15z"/>',plus:'<path d="M12 5v14M5 12h14"/>',chevL:'<path d="M15 18l-6-6 6-6"/>',chevR:'<path d="M9 18l6-6-6-6"/>',close:'<path d="M18 6L6 18M6 6l12 12"/>',download:'<path d="M12 3v12m-4-4 4 4 4-4M4 17v3h16v-3"/>',upload:'<path d="M12 16V4m-4 4 4-4 4 4M4 17v3h16v-3"/>',clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',alert:'<path d="M10.3 3.9 1.9 18.3a2 2 0 0 0 1.7 3h16.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0zM12 9v4M12 17h.01"/>',check:'<path d="M20 6 9 17l-5-5"/>',search:'<circle cx="10.5" cy="10.5" r="7"/><path d="m16 16 5 5"/>',menu:'<path d="M4 6h16M4 12h16M4 18h16"/>',edit:'<path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4z"/>',trash:'<path d="M3 6h18M8 6V4h8v2m3 0-1 15H6L5 6M10 10v7M14 10v7"/>',bell:'<path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/>',filter:'<path d="M4 7h16M7 12h10M10 17h4"/>',print:'<path d="M6 9V3h12v6M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v8H6z"/>',link:'<path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/>',arrow:'<path d="M5 12h14m-6-6 6 6-6 6"/>',save:'<path d="M4 3h14l3 3v15H3V3h1zm3 0v6h10V3M7 21v-9h10v9"/>',spark:'<path d="m12 3 1.8 6.2L20 11l-6.2 1.8L12 19l-1.8-6.2L4 11l6.2-1.8L12 3z"/>'};
+const ic=(name,size=17)=>`<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths[name]||paths.tasks}</svg>`;
+const btn=(label,action,cls='')=>`<button type="button" class="btn ${cls}" data-action="${action}">${label}</button>`;
+const sb=(label,color='gray')=>`<span class="pill ${color}">${esc(label)}</span>`;
+const statusColor=s=>({"Por iniciar":"gray","En proceso":"blue","Bloqueado":"red","En validación":"amber","Finalizado":"green"}[s]||'gray');
+const prioColor=s=>({P1:'red',P2:'amber',P3:'blue',P4:'gray'}[s]||'gray');
+const avatar=name=>`<span class="avatar">${esc((name||'?').split(/\s+/).slice(0,2).map(x=>x[0]||'').join('').toUpperCase())}</span>`;
+function emptyData(){return {version:1,settings:{department:'INGENIERÍA',hoursWarning:85,staleDays:5,demo:false},members:[{id:'m_admin_dani',name:'Dani',role:'Administrador de Ingeniería',username:'daniel',passwordHash:'070badde23c2171a49f14bd4060c0e34ca1b6a97f8ddcb3ba95db7a639982ca7',mustChangePassword:true,email:'',accessRole:'admin',calendarVisibility:'admin',outlookStatus:'not_connected',weeklyHours:40,recurringHours:0,active:true,color:'#2463db'}],projects:[],tasks:[],meetings:[],absences:[],adminMemberId:'m_admin_dani',selectedMember:'m_admin_dani'};}
+function migrateLocalAuth(x){
+  if(!x||x.version!==1)return emptyData();
+  x.settings={department:'INGENIERÍA',hoursWarning:85,staleDays:5,demo:false,...(x.settings||{})};
+  x.members=Array.isArray(x.members)?x.members:[];x.projects=Array.isArray(x.projects)?x.projects:[];x.tasks=Array.isArray(x.tasks)?x.tasks:[];x.meetings=Array.isArray(x.meetings)?x.meetings:[];x.absences=Array.isArray(x.absences)?x.absences:[];
+  let admin=x.members.find(m=>m.accessRole==='admin')||x.members.find(m=>/dani|daniel/i.test(m.name||''));
+  if(!admin){admin={...emptyData().members[0]};x.members.unshift(admin)}
+  admin.accessRole='admin';
+  if(!admin.username)admin.username='daniel';
+  if(!admin.passwordHash&&!admin.hasPassword){admin.passwordHash='070badde23c2171a49f14bd4060c0e34ca1b6a97f8ddcb3ba95db7a639982ca7';admin.mustChangePassword=true}
+  if(admin.active===undefined)admin.active=true;
+  if(admin.weeklyHours===undefined)admin.weeklyHours=40;
+  if(admin.recurringHours===undefined)admin.recurringHours=0;
+  x.adminMemberId=admin.id;x.selectedMember=x.selectedMember&&x.members.some(m=>m.id===x.selectedMember)?x.selectedMember:admin.id;
+  return x;
+}
+function load(){try{let raw=localStorage.getItem(KEY);if(raw){let x=JSON.parse(raw);if(x&&x.version===1&&Array.isArray(x.tasks)&&Array.isArray(x.members)&&Array.isArray(x.projects))return migrateLocalAuth(x)}}catch(e){console.warn('No se pudo recuperar almacenamiento',e)}return emptyData()}
+const AUTH_SESSION_KEY='ingenieria-control-local-session-v1';
+const REMOTE_TOKEN_KEY='ingenieria-control-supabase-session-v1';
+const REMOTE_API='https://ezhlltgcqektrclgzhfi.supabase.co/functions/v1/ingenieria-control-api';
+const REMOTE_API_KEY='sb_publishable_QnmVt7kK6LTX6HqY3eJcUg_wTN-O6Hp';
+const THEME_KEY='ingenieria-control-theme-v1';
+let appTheme=localStorage.getItem(THEME_KEY)==='light'?'light':'dark';
+function applyTheme(theme){appTheme=theme==='light'?'light':'dark';document.documentElement.setAttribute('data-theme',appTheme);localStorage.setItem(THEME_KEY,appTheme);let meta=document.querySelector('meta[name="theme-color"]');if(meta)meta.setAttribute('content',appTheme==='light'?'#eef3f8':'#0d141c');}
+applyTheme(appTheme);
+const themeToggleLabel=()=>appTheme==='dark'?'Modo claro':'Modo oscuro';
+let authMemberId=sessionStorage.getItem(AUTH_SESSION_KEY)||'';
+let remoteToken=sessionStorage.getItem(REMOTE_TOKEN_KEY)||'';
+async function remoteCall(action,payload={},auth=true){
+  let headers={'Content-Type':'application/json','apikey':REMOTE_API_KEY};
+  if(auth&&remoteToken)headers.Authorization='Bearer '+remoteToken;
+  let res=await fetch(REMOTE_API,{method:'POST',headers,body:JSON.stringify({action,...payload})});
+  let data=await res.json().catch(()=>({}));
+  if(!res.ok||data.error){let e=new Error(data.error||('Error HTTP '+res.status));e.status=res.status;throw e}
+  return data;
+}
+function meaningfulLocalData(x){return !!(x&&(x.tasks?.length||x.projects?.length||x.meetings?.length||x.absences?.length||(x.members?.length||0)>1))}
+
+function sha256Ascii(ascii){var mathPow=Math.pow,maxWord=mathPow(2,32),lengthProperty='length',i,j,result='',words=[],asciiBitLength=ascii[lengthProperty]*8;var hash=sha256Ascii.h=sha256Ascii.h||[],k=sha256Ascii.k=sha256Ascii.k||[],primeCounter=k[lengthProperty],isComposite={};for(var candidate=2;primeCounter<64;candidate++){if(!isComposite[candidate]){for(i=0;i<313;i+=candidate)isComposite[i]=candidate;hash[primeCounter]=(mathPow(candidate,.5)*maxWord)|0;k[primeCounter++]=(mathPow(candidate,1/3)*maxWord)|0}}ascii+='\x80';while(ascii[lengthProperty]%64-56)ascii+='\x00';for(i=0;i<ascii[lengthProperty];i++){j=ascii.charCodeAt(i);if(j>>8)return'';words[i>>2]|=j<<((3-i)%4)*8}words[words[lengthProperty]]=((asciiBitLength/maxWord)|0);words[words[lengthProperty]]=asciiBitLength;for(j=0;j<words[lengthProperty];){var w=words.slice(j,j+=16),oldHash=hash;hash=hash.slice(0,8);for(i=0;i<64;i++){var w15=w[i-15],w2=w[i-2],a=hash[0],e=hash[4];var temp1=hash[7]+((e>>>6|e<<26)^(e>>>11|e<<21)^(e>>>25|e<<7))+((e&hash[5])^((~e)&hash[6]))+k[i]+(w[i]=(i<16)?w[i]:(w[i-16]+((w15>>>7|w15<<25)^(w15>>>18|w15<<14)^(w15>>>3))+w[i-7]+((w2>>>17|w2<<15)^(w2>>>19|w2<<13)^(w2>>>10)))|0);var temp2=((a>>>2|a<<30)^(a>>>13|a<<19)^(a>>>22|a<<10))+((a&hash[1])^(a&hash[2])^(hash[1]&hash[2]));hash=[(temp1+temp2)|0].concat(hash);hash[4]=(hash[4]+temp1)|0;hash.pop()}for(i=0;i<8;i++)hash[i]=(hash[i]+oldHash[i])|0}for(i=0;i<8;i++)for(j=3;j+1;j--){var b=(hash[i]>>(j*8))&255;result+=(b<16?'0':'')+b.toString(16)}return result}
+async function passwordHash(password){return sha256Ascii(unescape(encodeURIComponent('ingenieria-control|'+String(password||''))))}
+const loginUser=()=>db.members.find(m=>m.id===authMemberId&&m.active!==false&&m.username);
+const isAdmin=()=>loginUser()?.accessRole==='admin';
+function loginHtml(){return `<div class="auth-screen"><section class="auth-panel"><div class="auth-brand">INGENIERÍA&nbsp; / &nbsp;CONTROL</div><div class="auth-rule"></div><h1>Acceso al departamento</h1><p>Ingresa con el nombre de usuario y contraseña asignados por el administrador.</p><form id="localLoginForm"><label>Usuario</label><input name="username" autocomplete="username" autocapitalize="none" spellcheck="false" placeholder="Ej. daniel o ing.carlos" required><label>Contraseña</label><input name="password" type="password" autocomplete="current-password" placeholder="Tu contraseña" required><button class="auth-submit" type="submit">Iniciar sesión</button><p class="auth-error" id="authError"></p></form><div class="login-meta"><span class="auth-chip"><span class="auth-dot"></span> Supabase · compartido</span><button type="button" class="btn small theme-toggle" data-action="toggle-theme">${ic('spark')} ${themeToggleLabel()}</button><span class="tiny muted">Datos sincronizados entre usuarios</span></div><p class="auth-foot">Sistema privado de gestión de Ingeniería</p></section></div>`}
+let db=load();let ui={preview:false,view:'dashboard',taskView:'table',search:'',status:'',owner:'',project:'',priority:'',week:weekToday(),month:today().slice(0,7),projectId:'',memberId:'',calendarFilter:'',menu:false};
+let remoteSyncTimer=null,remoteSyncBusy=false,remoteSyncAgain=false;
+function cacheLocal(){try{localStorage.setItem(KEY,JSON.stringify(db));return true}catch(e){toast('No se pudo guardar la copia local de respaldo.',true);return false}}
+async function syncRemoteNow(){
+  if(!remoteToken)return true;
+  if(remoteSyncBusy){remoteSyncAgain=true;return true}
+  remoteSyncBusy=true;
+  try{
+    await remoteCall('sync',{state:db});
+    return true;
+  }catch(e){
+    if(e.status===401){remoteToken='';authMemberId='';sessionStorage.removeItem(REMOTE_TOKEN_KEY);sessionStorage.removeItem(AUTH_SESSION_KEY);render()}
+    throw e;
+  }finally{
+    remoteSyncBusy=false;
+    if(remoteSyncAgain){remoteSyncAgain=false;setTimeout(()=>syncRemoteNow().catch(err=>toast('No se pudo sincronizar con Supabase: '+err.message,true)),50)}
+  }
+}
+const save=()=>{let ok=cacheLocal();if(remoteToken){clearTimeout(remoteSyncTimer);remoteSyncTimer=setTimeout(()=>syncRemoteNow().catch(e=>toast('No se pudo sincronizar con Supabase: '+e.message,true)),120)}return ok};
+async function refreshRemoteState(){let r=await remoteCall('state');db=migrateLocalAuth(r.state);authMemberId=r.member.id;db.selectedMember=db.members.some(m=>m.id===authMemberId)?authMemberId:(db.adminMemberId||db.members[0]?.id||'');sessionStorage.setItem(AUTH_SESSION_KEY,authMemberId);cacheLocal();return r}
+async function bootstrapRemote(){
+  if(!remoteToken){authMemberId='';sessionStorage.removeItem(AUTH_SESSION_KEY);render();return}
+  try{await refreshRemoteState();ui.view=isAdmin()?'dashboard':'my';render()}
+  catch(e){remoteToken='';authMemberId='';sessionStorage.removeItem(REMOTE_TOKEN_KEY);sessionStorage.removeItem(AUTH_SESSION_KEY);render();toast('La sesión compartida venció. Inicia sesión de nuevo.',true)}
+}
+
+function toast(msg,error=false){let host=document.getElementById('toasts'), el=document.createElement('div');el.className='toast'+(error?' error':'');el.textContent=msg;host.appendChild(el);setTimeout(()=>el.remove(),3400)}
+const mem=id=>db.members.find(m=>m.id===id);const proj=id=>db.projects.find(p=>p.id===id);const memberName=id=>mem(id)?.name||'Sin asignar';const projectName=id=>proj(id)?.name||'Sin proyecto';const active=t=>t.status!=='Finalizado';const allActive=()=>db.tasks.filter(active);
+const validNum=v=>Number.isFinite(Number(v))?Number(v):0;
+// Soporte y otras actividades recurrentes descuentan disponibilidad; NO vuelven a sumar como carga de proyecto.
+const isRecurring=t=>['Soporte a producción','Reuniones / gestión recurrente','Otra actividad recurrente'].includes(t.workType);
+const taskHours=(memberId,w,omitId='',recurring=false)=>integer(db.tasks.filter(t=>t.id!==omitId&&active(t)&&t.ownerId===memberId&&isRecurring(t)===recurring).reduce((sum,t)=>sum+(t.allocations||[]).filter(a=>a.week===w).reduce((v,a)=>v+n(a.hours),0),0));
+const recurringTaskHours=(memberId,w,omitId='')=>taskHours(memberId,w,omitId,true);
+const fixedRecurring=m=>n(m.recurringHours);
+const absenceHours=(memberId,w)=>integer(db.absences.filter(a=>a.memberId===memberId&&a.week===w).reduce((s,a)=>s+n(a.hours),0));
+const capacity=(m,w,omitId='')=>Math.max(0,integer(n(m.weeklyHours)-fixedRecurring(m)-recurringTaskHours(m.id,w,omitId)-absenceHours(m.id,w)));
+const loadHours=(memberId,w,omitId='')=>taskHours(memberId,w,omitId,false);
+const netHours=(m,w)=>integer(capacity(m,w)-loadHours(m.id,w));
+const ratio=(hrs,cap)=>cap?Math.round(hrs/cap*100):hrs?999:0;
+const loadColor=(r)=>r>100?'red':r>=n(db.settings.hoursWarning)?'amber':'green';
+const barColor=(r)=>r>100?'bar-red':r>=n(db.settings.hoursWarning)?'bar-amber':'bar-green';
+const loadBadge=(r)=>sb(r>100?'Sobrecarga':r>=n(db.settings.hoursWarning)?'Carga alta':'Disponible',loadColor(r));
+const overdue=t=>active(t)&&t.due&&t.due<today();
+const near=t=>active(t)&&t.due&&t.due>=today()&&t.due<=shift(today(),2);
+const metrics=()=>{let due=db.tasks.filter(t=>t.due&&t.due<=today()&&(t.status==='Finalizado'?t.completedAt&&iso(t.completedAt.slice(0,10))>=t.due:true));return{active:allActive().length,overdue:db.tasks.filter(overdue).length,blocked:allActive().filter(t=>t.status==='Bloqueado').length,projects:db.projects.filter(p=>p.status!=='Finalizado'&&p.status!=='Cancelado').length,decisions:allActive().filter(t=>t.decisionRequired).length}};
+function percentProject(id){let x=db.tasks.filter(t=>t.projectId===id);return x.length?Math.round(x.filter(t=>!active(t)).length/x.length*100):0}
+const currentMember=()=>isAdmin()?(mem(db.selectedMember)||mem(db.adminMemberId)||db.members.find(m=>m.active)||db.members[0]):loginUser();
+const adminMember=()=>mem(db.adminMemberId)||db.members.find(m=>m.accessRole==='admin');
+const navItems=[['dashboard','Centro de control','dashboard'],['my','Mi trabajo','my'],['tasks','Pendientes','tasks'],['projects','Proyectos','projects'],['team','Carga y equipo','team'],['calendar','Calendario','calendar'],['meetings','Reuniones','meetings'],['reports','Resultados','reports'],['users','Usuarios y accesos','team'],['settings','Configuración','settings']];
+function render(){
+  let logged=loginUser();
+  if(!logged){document.getElementById('app').innerHTML=loginHtml();return}
+  if(!isAdmin()){
+    db.selectedMember=logged.id;ui.preview=false;
+    if(!['my','calendar'].includes(ui.view))ui.view='my';
+  }
+  if(ui.preview&&ui.view!=='my')ui.view='my';
+  let titles={dashboard:'Resumen ejecutivo',my:'Mi trabajo',tasks:'Gestión de pendientes',projects:'Portafolio de proyectos',team:'Carga y disponibilidad',calendar:'Calendario',meetings:'Reuniones y acuerdos',reports:'Indicadores y resultados',users:'Usuarios y accesos',settings:'Configuración'};
+  let mainNav=isAdmin()?(ui.preview?[navItems[1]]:navItems.slice(0,6)):[navItems[1],navItems[5]];
+  let followNav=isAdmin()?(ui.preview?[]:navItems.slice(6)):[];
+  let profileControl=isAdmin()?`<select class="top-select" id="globalMember" aria-label="Perfil visualizado">${db.members.filter(m=>m.active).map(m=>`<option value="${esc(m.id)}" ${m.id===db.selectedMember?'selected':''}>${esc(m.name)}</option>`).join('')}</select>`:`<span class="auth-chip">${esc(logged.username||logged.name)}</span>`;
+  document.getElementById('app').innerHTML=`<div class="app"><aside class="side ${ui.menu?'open':''}"><div class="brand"><span class="brand-mark" aria-hidden="true">◇</span><div><strong>INGENIERÍA</strong><small>DEPARTMENT CONTROL</small></div></div><div class="nav-section">GESTIÓN</div><nav class="nav">${mainNav.map(([v,title,icon])=>`<button class="${ui.view===v?'active':''}" data-action="view:${v}">${ic(icon)}<span>${title}</span></button>`).join('')}</nav>${followNav.length?`<div class="nav-section">SEGUIMIENTO</div><nav class="nav">${followNav.map(([v,title,icon])=>`<button class="${ui.view===v?'active':''}" data-action="view:${v}">${ic(icon)}<span>${title}</span></button>`).join('')}</nav>`:''}<div class="side-bottom"><div class="storage-chip" title="Los datos operativos se guardan de forma compartida en Supabase."><span class="storage-dot"></span> ${ui.preview?'VISTA PREVIA':'SUPABASE · SINCRONIZADO'}</div><div class="side-user">${avatar(logged.name)}<div><b>${esc(logged.name||'Usuario')}</b><span>${isAdmin()?'Administrador':'Ingeniero'} · @${esc(logged.username||'usuario')}</span></div></div><div class="sidebar-account-actions"><button class="btn small" data-action="change-password">Contraseña</button><button class="btn small" data-action="logout">Salir</button></div></div></aside><div class="mobile-overlay ${ui.menu?'on':''}" data-action="closemenu"></div><div class="main-wrap"><header class="topbar"><div class="flex"><button class="icon-btn hamburger" data-action="menu" aria-label="Abrir menú">${ic('menu')}</button><div><div class="crumb">INGENIERÍA / CONTROL</div><h1>${titles[ui.view]}</h1></div></div><div class="top-actions">${profileControl}<button type="button" class="btn small theme-toggle" data-action="toggle-theme">${ic('spark')} ${themeToggleLabel()}</button>${ui.preview?'<button type="button" class="btn small" data-action="exit-preview">Salir de vista previa</button>':''}<button class="icon-btn" data-action="view:my" aria-label="Mi trabajo">${ic('bell')}</button></div></header><main class="content">${db.settings.demo?`<div class="demo-banner"><span><b>MODO EJEMPLO</b> · Los registros precargados son ilustrativos. Puedes editarlos o comenzar con una base vacía.</span><button class="mini-link" data-action="clear-demo">Empezar desde cero</button></div>`:''}${({dashboard:renderDashboard,my:renderMy,tasks:renderTasks,projects:renderProjects,team:renderTeam,calendar:renderCalendar,meetings:renderMeetings,reports:renderReports,users:renderUsers,settings:renderSettings}[ui.view]||renderMy)()}</main></div></div>`;
+}
+const head=(eyebrow,title,sub,actions='')=>`<div class="head"><div><div class="eyebrow">${eyebrow}</div><h2>${title}</h2><div class="sub">${sub}</div></div><div class="actions">${actions}</div></div>`;
+const metricCard=(label,val,hint,ico,color='var(--text)')=>`<div class="card metric"><div class="metric-top"><div class="label">${label}</div><span class="sym" style="color:${color}">${ic(ico)}</span></div><div class="value">${val}</div><div class="metric-footer"><span class="status-led"></span><span class="hint">${hint}</span></div></div>`;
+const smallRow=t=>`<div class="task-line"><span class="mark" style="background:${overdue(t)?'#da4653':t.status==='Bloqueado'?'#da4653':near(t)?'#f3a72b':'#3a79d7'}"></span><div class="detail"><b class="clickable" data-action="task:${esc(t.id)}">${esc(t.title)}</b><small>${esc(memberName(t.ownerId))} · ${esc(projectName(t.projectId))} · ${compact(t.due)}</small></div>${sb(overdue(t)?'Vencido':t.status==='Bloqueado'?'Bloqueado':t.priority,overdue(t)?'red':statusColor(t.status))}</div>`;
+const projectRow=p=>`<div class="proj-row"><div class="between"><span class="project-title clickable" data-action="project:${esc(p.id)}">${esc(p.name)}</span><span class="mini semibold">${percentProject(p.id)}%</span></div><div class="progress"><div class="bar-blue" style="width:${percentProject(p.id)}%"></div></div><div class="between mini muted"><span>${esc(memberName(p.ownerId))}</span><span>${db.tasks.filter(t=>t.projectId===p.id&&active(t)).length} pendientes</span></div></div>`;
+function renderDashboard(){
+let mt=metrics(),week=ui.week;
+let people=db.members.filter(m=>m.active),totalCap=people.reduce((s,m)=>s+capacity(m,week),0),totalLoad=people.reduce((s,m)=>s+loadHours(m.id,week),0);
+let overallRatio=ratio(totalLoad,totalCap),net=integer(totalCap-totalLoad),totalTasks=db.tasks.length,completed=db.tasks.filter(t=>t.status==='Finalizado').length;
+let attention=allActive().filter(t=>overdue(t)||t.status==='Bloqueado'||t.decisionRequired||near(t)).sort((a,b)=>(overdue(b)-overdue(a))||a.due.localeCompare(b.due));
+let personal=allActive().filter(t=>t.ownerId===db.selectedMember).sort((a,b)=>(overdue(b)-overdue(a))||a.due.localeCompare(b.due));
+let capRatio=(v,max)=>max?Math.min(100,Math.max(0,v/max*100)):0;
+let health=[
+ ['Carga semanal',people.length?overallRatio+'%':'—',overallRatio>100?'red':overallRatio>=n(db.settings.hoursWarning)?'amber':'green',Math.min(100,overallRatio)],
+ ['Proyectos activos',mt.projects,'green',capRatio(mt.projects,Math.max(1,db.projects.length))],
+ ['Pendientes al día',mt.active-mt.overdue,'green',capRatio(mt.active-mt.overdue,Math.max(1,mt.active))],
+ ['Bloqueos',mt.blocked,mt.blocked?'amber':'green',capRatio(mt.blocked,Math.max(1,mt.active))],
+ ['Disponibilidad',people.length?net+' h':'—',net<0?'red':net===0?'amber':'green',capRatio(Math.max(0,net),Math.max(1,totalCap))]
+];
+return `${head('INGENIERÍA / CONTROL DEPARTAMENTAL','Resumen ejecutivo','Panorama operativo de proyectos, capacidad y compromisos de Ingeniería.',btn(ic('plus')+' Nuevo pendiente','new-task','primary')+btn('Nuevo proyecto','new-project'))}
+${!db.members.length&&!db.projects.length&&!db.tasks.length&&!db.meetings.length?`<section class="card setup-card"><div><span class="eyebrow">PRIMEROS PASOS</span><h3>Tu departamento, desde cero.</h3><p>Comienza registrando a tu equipo; después crea los proyectos y asigna los primeros pendientes. No hay datos de demostración.</p></div><div class="actions">${btn(ic('plus')+' Agregar integrante','new-member','primary')}${btn('Crear proyecto','new-project')}${btn('Crear pendiente','new-task')}</div></section>`:''}
+${!db.members.length&&!db.projects.length&&!db.tasks.length&&!db.meetings.length?`<div class="card migration-callout section"><div><b>¿Vienes de otra versión del HTML?</b><p class="muted mini">Importa primero tu respaldo JSON desde la versión que ya llenaste. No borres ese archivo ni sus datos locales.</p></div>${btn(ic('upload')+' Importar mi respaldo','import','primary')}</div>`:''}
+<div class="grid g4 executive-kpis">
+${metricCard('Pendientes activos',mt.active,'Compromisos en seguimiento','tasks')}
+${metricCard('Pendientes vencidos',mt.overdue,'Requieren atención','alert')}
+${metricCard('Proyectos activos',mt.projects,'Portafolio del departamento','projects')}
+${metricCard('Decisiones pendientes',mt.decisions,'Por resolver','bell')}
+</div>
+<div class="executive-main section">
+<section class="card executive-panel"><div class="card-header"><div><h3>${ic('team')} Capacidad operativa</h3><p>Semana ${niceWeek(week)}</p></div>${sb(people.length?overallRatio+'%':'Sin equipo',people.length?loadColor(overallRatio):'gray')}</div>
+<div class="capacity-numbers"><div><span>Horas asignadas</span><strong>${integer(totalLoad)} h</strong></div><div><span>Disponibles</span><strong>${integer(totalCap)} h</strong></div><div><span>Saldo</span><strong class="${net<0?'tone-red':'tone-green'}">${net} h</strong></div></div>
+<div class="progress"><div class="${barColor(overallRatio)}" style="width:${Math.min(100,overallRatio)}%"></div></div>
+<div class="panel-foot"><span>${people.length} integrantes activos</span>${btn('Ver carga '+ic('arrow'),'view:team','small')}</div></section>
+<section class="card executive-panel"><div class="card-header"><div><h3>${ic('tasks')} Mis prioridades</h3><p>Trabajo del perfil visualizado</p></div>${sb(personal.length+' tareas','gray')}</div>
+<div class="executive-task-list">${personal.slice(0,3).map(smallRow).join('')||'<div class="panel-empty">No hay actividades asignadas.</div>'}</div>
+<div class="panel-foot"><span>${personal.filter(overdue).length} vencidas</span>${btn('Mi trabajo '+ic('arrow'),'view:my','small')}</div></section>
+<section class="card executive-panel"><div class="card-header"><div><h3>${ic('bell')} Acciones pendientes</h3><p>Bloqueos y decisiones del equipo</p></div>${sb(attention.length+' alertas',attention.length?'amber':'green')}</div>
+<div class="executive-task-list">${attention.slice(0,3).map(smallRow).join('')||'<div class="panel-empty">No hay asuntos que requieren intervención.</div>'}</div>
+<div class="panel-foot"><span>${mt.decisions} decisiones pendientes</span>${btn('Ver pendientes '+ic('arrow'),'view:tasks','small')}</div></section>
+</div>
+<div class="status-section section"><div class="status-header"><span>ESTADO DEL DEPARTAMENTO</span><span class="all-good">${ic('check')} RESUMEN LOCAL</span></div><div class="health-grid">${health.map(([label,val,tone,width])=>`<div class="health-tile"><div class="health-title">${label}<span class="health-light ${tone}"></span></div><strong>${val}</strong><div class="health-progress"><span class="${tone}" style="width:${width}%"></span></div></div>`).join('')}</div></div>
+<div class="section two-columns executive-detail"><section class="card"><div class="card-header"><div><h3>Proyectos en seguimiento</h3><p>Avance de actividades finalizadas</p></div>${btn('Ver portafolio '+ic('arrow'),'view:projects','small')}</div>${db.projects.filter(p=>p.status!=='Cancelado').slice(0,5).map(projectRow).join('')||'<div class="empty">Aún no hay proyectos.</div>'}</section>
+<section class="card"><div class="card-header"><div><h3>Distribución por integrante</h3><p>Carga según el plan semanal</p></div>${btn('Ver equipo '+ic('arrow'),'view:team','small')}</div><div class="stack">${people.map(m=>{let h=loadHours(m.id,week),c=capacity(m,week),r=ratio(h,c);return `<div class="clickable member-load" data-action="member:${esc(m.id)}"><div class="between mini"><span class="semibold">${esc(m.name)}</span><span class="muted">${h} / ${c} h · ${r}%</span></div><div class="progress"><div class="${barColor(r)}" style="width:${Math.min(100,r)}%"></div></div></div>`}).join('')||'<div class="empty">Agrega integrantes para ver la capacidad.</div>'}</div><div class="muted tiny" style="margin-top:17px">Disponible = jornada − horas recurrentes − ausencias.</div></section></div>`;
+}
+const filteredTasks=()=>db.tasks.filter(t=>(!ui.search||[t.title,t.description,memberName(t.ownerId),projectName(t.projectId)].join(' ').toLowerCase().includes(ui.search.toLowerCase()))&&(!ui.status||t.status===ui.status)&&(!ui.owner||t.ownerId===ui.owner)&&(!ui.project||t.projectId===ui.project)&&(!ui.priority||t.priority===ui.priority)).sort((a,b)=>(overdue(b)-overdue(a))||((a.due||'9999').localeCompare(b.due||'9999')));
+function taskTable(tasks){return `<div class="table-wrap"><table class="data-table"><thead><tr><th>ACTIVIDAD</th><th>RESPONSABLE</th><th>PROYECTO</th><th>PRIORIDAD</th><th>ESTADO</th><th>COMPROMISO</th><th>PLAN SEMANAL</th><th></th></tr></thead><tbody>${tasks.map(t=>`<tr><td class="title-cell"><span class="clickable" data-action="task:${t.id}">${esc(t.title)}</span><small>${esc(t.requestArea||'Ingeniería')}${t.decisionRequired?' · Requiere decisión':''}</small></td><td>${esc(memberName(t.ownerId))}</td><td>${esc(projectName(t.projectId))}</td><td>${sb(t.priority,prioColor(t.priority))}</td><td>${sb(t.status,statusColor(t.status))}${sb(t.workType||'Proyecto / pendiente','gray')}${overdue(t)?' '+sb('Vencido','red'):''}</td><td>${compact(t.due)}</td><td>${integer((t.allocations||[]).filter(a=>a.week===ui.week).reduce((s,a)=>s+n(a.hours),0))} h</td><td><button class="icon-btn" data-action="task:${t.id}" title="Abrir actividad">${ic('arrow')}</button></td></tr>`).join('')}</tbody></table>${tasks.length?'':'<div class="empty">No se encontraron pendientes con estos filtros.</div>'}</div>`}
+function taskKanban(tasks){return `<div class="kanban">${statuses.map(s=>`<div class="kan-col"><div class="between"><b>${s}</b>${sb(tasks.filter(t=>t.status===s).length,statusColor(s))}</div>${tasks.filter(t=>t.status===s).map(t=>`<div class="kan-card clickable" data-action="task:${t.id}">${sb(t.priority,prioColor(t.priority))}<b style="margin-top:8px">${esc(t.title)}</b><p>${esc(memberName(t.ownerId))}</p><div class="between"><small>${compact(t.due)}</small>${overdue(t)?sb('Vencido','red'):''}</div></div>`).join('')||'<div class="muted tiny" style="padding:15px 0">Sin actividades</div>'}</div>`).join('')}</div>`}
+function taskFilters(){return `<div class="filters"><input class="input" id="taskSearch" placeholder="Buscar actividad, ingeniero..." value="${esc(ui.search)}"/><select id="filterStatus"><option value="">Todos los estados</option>${statuses.map(s=>`<option ${ui.status===s?'selected':''}>${s}</option>`).join('')}</select><select id="filterOwner"><option value="">Todos los responsables</option>${db.members.map(m=>`<option value="${m.id}" ${ui.owner===m.id?'selected':''}>${esc(m.name)}</option>`).join('')}</select><select id="filterProject"><option value="">Todos los proyectos</option>${db.projects.map(p=>`<option value="${p.id}" ${ui.project===p.id?'selected':''}>${esc(p.name)}</option>`).join('')}</select><select id="filterPriority"><option value="">Todas las prioridades</option>${priorities.map(p=>`<option ${ui.priority===p?'selected':''}>${p}</option>`).join('')}</select><button class="btn small" data-action="clear-filters">Limpiar</button></div>`}
+function renderTasks(){let tasks=filteredTasks();return `${head('CONTROL OPERATIVO','Gestión de pendientes',`${tasks.length} actividades visibles · Edición, seguimiento y asignación.`,btn(ic('plus')+' Nuevo pendiente','new-task','primary')+btn(ic('download')+' Excel/CSV','export-tasks'))}<div class="card"><div class="card-header"><div class="tabs">${[['table','Tabla'],['kanban','Kanban'],['calendar','Calendario']].map(([v,t])=>`<button class="tab ${ui.taskView===v?'selected':''}" data-action="task-view:${v}">${t}</button>`).join('')}</div><span class="pill gray">Semana ${niceWeek(ui.week)}</span></div>${taskFilters()}${ui.taskView==='table'?taskTable(tasks):ui.taskView==='kanban'?taskKanban(tasks):calendarGrid(ui.month,tasks)}</div>`}
+function renderMy(){let m=currentMember(),tasks=db.tasks.filter(t=>t.ownerId===m?.id&&active(t)),w=ui.week,h=m?loadHours(m.id,w):0,c=m?capacity(m,w):0,r=ratio(h,c);return `${head('ESPACIO INDIVIDUAL',`Mi trabajo · ${esc(m?.name||'Sin integrante')}`,ui.preview?'Previsualización del espacio del ingeniero. No son permisos reales ni inicio de sesión.':'Vista personal del perfil seleccionado. El acceso real requiere conectar autenticación.',btn(ic('plus')+' Nuevo pendiente','new-task','primary')+btn('Registrar soporte','new-support')+(!ui.preview&&adminMember()?btn('Mi perfil administrador','my-profile','small'):'')+(!ui.preview&&m?btn('Conectar Outlook','outlook-connect:'+m.id,'small'):''))}<div class="grid g4">${metricCard('Mis actividades',tasks.length,'Asignadas a este perfil','tasks','#2563db')}${metricCard('Vencidas',tasks.filter(overdue).length,'Compromisos pendientes','alert','#c94048')}${metricCard('Horas de proyectos',h+' h',`Disponibles: ${c} h`,'clock','#bd741c')}${metricCard('Carga semanal',r+'%',`Semana ${niceWeek(w)}`,'team','#18865b')}</div><div class="section two-columns"><section class="card"><div class="card-header"><div><h3>Mis compromisos</h3><p>Ordenados por fecha y urgencia</p></div>${sb(tasks.length+' activos','blue')}</div>${taskTable(tasks)}</section><div class="right-col"><section class="card"><div class="card-header"><h3>Mi capacidad semanal</h3>${loadBadge(r)}</div><div class="between"><b>${h} / ${c} horas</b><span class="muted mini">${r}%</span></div><div class="progress" style="margin-top:11px"><div class="${barColor(r)}" style="width:${Math.min(r,100)}%"></div></div><p class="muted mini">${r>100?'Carga planificada superior a la disponibilidad.':`Saldo de planificación: ${integer(c-h)} h.`} Recurrentes: ${m?integer(fixedRecurring(m)+recurringTaskHours(m.id,w)):0} h (${m?fixedRecurring(m):0} fijas + ${m?recurringTaskHours(m.id,w):0} registradas).</p></section><section class="card"><div class="card-header"><h3>Requieren actualización</h3></div>${tasks.filter(t=>t.status==='Bloqueado'||t.decisionRequired||overdue(t)).slice(0,5).map(smallRow).join('')||'<div class="empty">Sin bloqueos o vencimientos.</div>'}</section></div></div>`}
+function renderProjects(){return `${head('PORTAFOLIO','Proyectos de Ingeniería','Iniciativas, entregables, responsables y resultados.',btn(ic('plus')+' Nuevo proyecto','new-project','primary')+btn(ic('download')+' CSV','export-projects'))}<div class="grid g3">${db.projects.map(p=>{let ts=db.tasks.filter(t=>t.projectId===p.id),done=percentProject(p.id);return `<div class="card"><div class="between">${sb(p.category==='Proyecto de mejora'?'MEJORA':'PROYECTO','blue')}${sb(p.status,p.status==='Finalizado'?'green':p.status==='Cancelado'?'gray':'amber')}</div><h3 class="clickable" data-action="project:${p.id}" style="font-size:17px;margin:16px 0 6px">${esc(p.name)}</h3><p class="muted mini" style="min-height:35px">${esc(p.goal||'Sin objetivo definido')}</p><div class="between mini"><b>Avance de actividades</b><b>${done}%</b></div><div class="progress" style="margin:7px 0 14px"><div class="bar-blue" style="width:${done}%"></div></div><div class="between mini muted"><span>${esc(memberName(p.ownerId))}</span><span>${ts.filter(active).length} activos · ${ts.length} total</span></div><div class="divider"></div><div class="between mini"><span>Compromiso: ${compact(p.due)}</span><button class="mini-link" data-action="project:${p.id}">Abrir proyecto →</button></div></div>`}).join('')||'<div class="card empty">Sin proyectos. Crea el primero para organizar los entregables.</div>'}</div>`}
+function memberCard(m,w){let h=loadHours(m.id,w),c=capacity(m,w),r=ratio(h,c);return `<div class="card"><div class="member-head"><div class="flex">${avatar(m.name)}<div><strong>${esc(m.name)}</strong><div class="tiny muted">${esc(m.role||'Ingeniería')}</div></div></div>${loadBadge(r)}</div><div class="between" style="margin-top:18px"><span class="muted mini">${h} h planificadas / ${c} h disponibles</span><b>${r}%</b></div><div class="progress" style="margin:9px 0"><div class="${barColor(r)}" style="width:${Math.min(100,r)}%"></div></div><div class="between mini"><span style="color:${h>c?'var(--red)':'var(--green)'}">${h>c?integer(h-c)+' h excedentes':integer(c-h)+' h libres'}</span><span class="muted">${db.tasks.filter(t=>t.ownerId===m.id&&active(t)).length} tareas activas</span></div><div class="divider"></div><div class="between"><span class="mini muted">${m.weeklyHours} h jornada · ${integer(fixedRecurring(m)+recurringTaskHours(m.id,ui.week))} h recurrentes (${fixedRecurring(m)} fijas + ${recurringTaskHours(m.id,ui.week)} registradas)</span><button class="mini-link" data-action="member:${m.id}">Ver detalle →</button></div></div>`}
+function renderTeam(){let w=ui.week,people=db.members.filter(m=>m.active),cap=people.reduce((s,m)=>s+capacity(m,w),0),h=people.reduce((s,m)=>s+loadHours(m.id,w),0);return `${head('PLANIFICACIÓN','Carga y disponibilidad','Las tareas recurrentes descuentan disponibilidad y los proyectos consumen la capacidad restante.',btn(ic('plus')+' Integrante','new-member','primary')+btn('Registrar soporte','new-support')+btn('Simular asignación','simulate'))}<div class="card" style="margin-bottom:16px"><div class="between wrap"><div><b>Semana de planificación</b><div class="muted mini">Distribuye horas de cada actividad por semana, incluso en proyectos largos.</div></div><div class="nav-weeks"><button class="icon-btn" data-action="week:-1" title="Semana anterior">${ic('chevL')}</button><b>${niceWeek(w)}</b><button class="icon-btn" data-action="week:1" title="Semana siguiente">${ic('chevR')}</button><button class="btn small" data-action="week:today">Actual</button></div></div></div><div class="grid g4">${metricCard('Disponibilidad',integer(cap)+' h','Jornada menos tiempo reservado','clock','#2563db')}${metricCard('Carga programada',integer(h)+' h','Horas de actividades activas','tasks','var(--text)')}${metricCard('Saldo neto',integer(cap-h)+' h','No sustituye una revisión individual','team',h>cap?'#c94048':'#18865b')}${metricCard('Con sobrecarga',people.filter(m=>loadHours(m.id,w)>capacity(m,w)).length,'Ingenieros por encima del 100%','alert','#bd741c')}</div><div class="card section"><div class="between wrap"><div><b>Horas recurrentes registradas · ${niceWeek(w)}</b><div class="muted mini">Soporte, reuniones y gestión: descuentan capacidad de la semana seleccionada, además de las horas fijas.</div></div><b>${integer(people.reduce((total,m)=>total+recurringTaskHours(m.id,w),0))} h</b></div></div><div class="section grid g2">${people.map(m=>memberCard(m,w)).join('')||'<div class="card empty">Agrega integrantes al equipo.</div>'}</div><section class="card section"><div class="card-header"><div><h3>Proyección de las próximas seis semanas</h3><p>Horas asignadas / capacidad individual (semana seleccionada y siguientes)</p></div>${btn('Registrar ausencia','new-absence','small')}</div><div class="work-matrix"><table><thead><tr><th>INGENIERO</th>${Array.from({length:6},(_,i)=>`<th class="${i===0?'selected-week':''}">${niceWeek(shift(w,i*7))}</th>`).join('')}</tr></thead><tbody>${people.map(m=>`<tr><td><span class="clickable" data-action="member:${m.id}">${esc(m.name)}</span></td>${Array.from({length:6},(_,i)=>{let wk=shift(w,i*7),a=loadHours(m.id,wk),c=capacity(m,wk),r=ratio(a,c);return `<td class="${i===0?'selected-week':''}"><div class="between" style="min-width:85px"><b>${a}/${c} h</b><span style="color:${r>100?'var(--red)':r>=n(db.settings.hoursWarning)?'var(--amber)':'var(--green)'}">${r}%</span></div><div class="chartbar" style="margin-top:5px"><span class="${barColor(r)}" style="width:${Math.min(100,r)}%"></span></div></td>`}).join('')}</tr>`).join('')}</tbody></table></div><p class="muted tiny">El soporte recurrente resta horas disponibles; los demás pendientes suman carga. Cada actividad se cuenta una sola vez. Una actividad sin horas semanales no modifica la capacidad.</p></section>`}
+function calendarGrid(month,tasks){let [yr,mn]=month.split('-').map(Number),first=new Date(yr,mn-1,1),start=new Date(first);start.setDate(1-((first.getDay()+6)%7));let cells=Array.from({length:42},(_,i)=>{let dt=new Date(start);dt.setDate(start.getDate()+i);let s=iso(dt),items=tasks.filter(t=>t.due===s);return `<div class="day ${dt.getMonth()!==mn-1?'out':''} ${s===today()?'today':''}"><div class="date">${dt.getDate()}</div>${items.slice(0,3).map(t=>`<span class="cal-item ${overdue(t)?'red':t.status==='Finalizado'?'green':''}" data-action="task:${t.id}" title="${esc(t.title)}">${esc(t.title)}</span>`).join('')}${items.length>3?`<span class="tiny muted">+${items.length-3} más</span>`:''}</div>`});return `<div class="calendar">${['L','M','M','J','V','S','D'].map(d=>`<div class="dayhead">${d}</div>`).join('')}${cells.join('')}</div>`}
+function renderCalendar(){let [y,m]=ui.month.split('-').map(Number),items=isAdmin()?db.tasks:db.tasks.filter(t=>t.ownerId===loginUser()?.id);return `${head('PLANIFICACIÓN','Calendario',isAdmin()?'Fechas de entrega y compromisos del departamento.':'Tus compromisos y conexión personal de Outlook.',btn(ic('plus')+' Pendiente','new-task','primary')+btn('Conectar Outlook','outlook-connect:'+(loginUser()?.id||''),'small'))}<div class="card"><div class="card-header"><div class="nav-weeks"><button class="icon-btn" data-action="month:-1">${ic('chevL')}</button><h3 style="text-transform:capitalize">${date(ui.month+'-01').toLocaleDateString('es-GT',{month:'long',year:'numeric'})}</h3><button class="icon-btn" data-action="month:1">${ic('chevR')}</button></div><button class="btn small" data-action="month:today">Hoy</button></div>${calendarGrid(ui.month,items)}<p class="muted tiny">Selecciona un compromiso para ver o actualizar su ficha. Outlook se conectará desde este módulo cuando la autorización corporativa esté habilitada.</p></div>`}
+function renderMeetings(){return `${head('SEGUIMIENTO','Reuniones y acuerdos','Documenta decisiones y convierte los acuerdos en compromisos.',btn(ic('plus')+' Nueva reunión','new-meeting','primary'))}<div class="grid g2">${db.meetings.slice().sort((a,b)=>b.date.localeCompare(a.date)).map(mt=>{let t=db.tasks.filter(t=>t.meetingId===mt.id);return `<div class="card"><div class="between">${sb(compact(mt.date),'blue')}${sb(t.length+' acuerdos','gray')}</div><h3 class="clickable" data-action="meeting:${mt.id}" style="margin:14px 0 5px;font-size:17px">${esc(mt.title)}</h3><p class="muted mini">${esc(mt.notes||'Sin descripción')}</p><div class="divider"></div><div class="between mini"><span>${t.filter(x=>x.status==='Finalizado').length} / ${t.length} acuerdos cerrados</span><button class="mini-link" data-action="meeting:${mt.id}">Abrir minuta →</button></div></div>`}).join('')||'<div class="card empty">Aún no hay reuniones registradas.</div>'}</div>`}
+function renderReports(){let ts=db.tasks,done=ts.filter(t=>t.status==='Finalizado'),ontime=done.filter(t=>t.completedAt&&iso(t.completedAt.slice(0,10))<=t.originalDue).length,rate=done.length?Math.round(ontime/done.length*100):0,byArea=[...new Set(ts.map(t=>t.requestArea||'Ingeniería'))],byPerson=db.members.map(m=>({name:m.name,num:ts.filter(t=>t.ownerId===m.id&&active(t)).length})),max=Math.max(1,...byPerson.map(x=>x.num));return `${head('RESULTADOS','Indicadores de Ingeniería','Resumen de cumplimiento, ejecución y resultados de proyectos.',btn(ic('download')+' Exportar pendientes','export-tasks')+btn(ic('print')+' Imprimir','print'))}<div class="grid g4">${metricCard('Cerrados',done.length,'Acumulado del registro','check','#18865b')}${metricCard('Cierre puntual',done.length?rate+'%':'—','Sobre pendientes finalizados','calendar','#2563db')}${metricCard('Bloqueados',allActive().filter(t=>t.status==='Bloqueado').length,'Pendientes activos','alert','#c94048')}${metricCard('Vencidos',ts.filter(overdue).length,'Pendientes activos','clock','#bd741c')}</div><div class="section grid g2"><section class="card"><div class="card-header"><h3>Actividades abiertas por ingeniero</h3></div><div class="stack">${byPerson.map(x=>`<div class="report-bardiv"><span>${esc(x.name)}</span><div class="progress"><div class="bar-blue" style="width:${x.num/max*100}%"></div></div><b>${x.num}</b></div>`).join('')}</div><div class="callout" style="margin-top:17px">Esta gráfica muestra cantidad de tareas, no esfuerzo. Para distribuir trabajo, usa las horas del módulo de capacidad.</div></section><section class="card"><div class="card-header"><h3>Solicitudes por área</h3></div><div class="stack">${byArea.map(a=>`<div class="between"><span class="mini">${esc(a)}</span>${sb(ts.filter(t=>(t.requestArea||'Ingeniería')===a).length,'blue')}</div>`).join('')}</div></section></div><div class="section card"><div class="card-header"><h3>Resultados por proyecto</h3>${btn('Exportar CSV','export-projects','small')}</div><div class="table-wrap"><table class="data-table"><thead><tr><th>PROYECTO</th><th>RESPONSABLE</th><th>AVANCE*</th><th>AHORRO ESPERADO (Q)</th><th>AHORRO REAL (Q)</th><th>RESULTADO</th></tr></thead><tbody>${db.projects.map(p=>`<tr><td class="title-cell clickable" data-action="project:${p.id}">${esc(p.name)}</td><td>${esc(memberName(p.ownerId))}</td><td>${percentProject(p.id)}%</td><td>${money(p.expectedSavings)}</td><td>${money(p.actualSavings)}</td><td>${esc(p.result||'Sin documentar')}</td></tr>`).join('')}</tbody></table></div><p class="muted tiny">* Avance = actividades finalizadas / actividades registradas. Cierre puntual = cierres hasta la fecha original, sin borrar reprogramaciones. Los ahorros son campos manuales y no se suman automáticamente por posibles duplicidades.</p></div>`}
+function renderUsers(){
+  if(!isAdmin())return renderMy();
+  let owner=adminMember();
+  return `${head('ADMINISTRACIÓN','Usuarios y accesos','Crea los accesos de tu equipo con nombre de usuario y contraseña.',btn(ic('plus')+' Crear usuario','new-member','primary')+btn(ic('download')+' Respaldo','backup'))}
+  <div class="modal-note account-notice"><b>Acceso local activo.</b> Esta versión no necesita Python. Tú creas el usuario y la contraseña de cada integrante. Por ahora los accesos viven en este navegador; para que varios equipos compartan la misma información necesitaremos después publicar una base de datos.</div>
+  <section class="card section"><div class="card-header"><div><h3>Tu cuenta · administrador</h3><p>Un solo perfil con vista gerencial y espacio personal.</p></div>${owner?sb('Administrador','green'):sb('Falta asignar','amber')}</div>${owner?`<div class="between wrap"><div class="flex">${avatar(owner.name)}<div><b>${esc(owner.name)}</b><div class="tiny muted">Usuario: <b>${esc(owner.username||'sin usuario')}</b> · Administrador + Mi trabajo</div></div></div><div class="flex wrap">${btn('Abrir mi trabajo','my-profile','primary')}${btn('Editar mi cuenta','edit-member:'+owner.id,'small')}${btn('Cambiar mi contraseña','change-password','small')}</div></div>`:'<p class="muted mini">No hay un administrador configurado.</p>'}</section>
+  <section class="card section"><div class="card-header"><div><h3>Directorio del departamento</h3><p>${db.members.filter(m=>m.active).length} perfiles activos</p></div>${btn(ic('plus')+' Nuevo usuario','new-member','small')}</div><div class="table-wrap"><table class="data-table"><thead><tr><th>INTEGRANTE</th><th>USUARIO</th><th>ROL</th><th>OUTLOOK</th><th>ACCIONES</th></tr></thead><tbody>${db.members.map(m=>`<tr><td class="title-cell">${esc(m.name)} ${owner?.id===m.id?sb('Mi perfil','blue'):''}<small>${esc(m.role||'Ingeniería')}</small></td><td><b>@${esc(m.username||'sin usuario')}</b><small>${esc(m.email||'Sin correo Outlook')}</small></td><td>${sb(m.accessRole==='admin'?'Administrador':m.accessRole==='viewer'?'Consulta':'Ingeniero',m.accessRole==='admin'?'blue':'gray')}</td><td>${sb(m.outlookStatus==='connected'?'Conectado':'Sin conectar',m.outlookStatus==='connected'?'green':'gray')}</td><td><div class="flex wrap"><button class="btn small" data-action="edit-member:${esc(m.id)}">Editar / contraseña</button><button class="btn small" data-action="preview-member:${esc(m.id)}">Ver vista</button><button class="btn small" data-action="outlook-connect:${esc(m.id)}">Outlook</button></div></td></tr>`).join('')}</tbody></table></div></section>
+  <section class="card section"><div class="card-header"><div><h3>Cómo funcionará al compartirla</h3><p>La interfaz y los usuarios ya están definidos.</p></div>${sb('Modo local actual','amber')}</div><div class="outlook-plan"><div><span class="plan-index">01</span><b>Hoy · sin instalación</b><p>Abres este HTML, inicias sesión y gestionas proyectos, usuarios y cargas desde tu equipo.</p></div><div><span class="plan-index">02</span><b>Después · datos compartidos</b><p>Se conecta una base web para que todos entren desde sus computadoras con los mismos usuarios y datos.</p></div><div><span class="plan-index">03</span><b>Outlook personal</b><p>Cada ingeniero selecciona “Conectar Outlook” en Calendario y autoriza su propia cuenta corporativa.</p></div></div></section>`
+}
+function renderSettings(){return `${head('ADMINISTRACIÓN','Configuración','Gestiona el almacenamiento, los integrantes y las reglas de planificación.',btn(ic('download')+' Exportar respaldo','backup','primary'))}<div class="grid g2"><section class="card"><div class="card-header"><h3>Parámetros del departamento</h3></div><form id="settingsForm" class="stack"><div class="field"><label>Nombre del departamento</label><input class="input" name="department" required value="${esc(db.settings.department)}"/></div><div class="field"><label>Umbral de carga alta (%)</label><input class="input" name="hoursWarning" type="number" min="1" max="100" required value="${n(db.settings.hoursWarning)}"/><small>La sobrecarga se señala siempre por encima del 100%.</small></div><div class="field"><label>Alerta por inactividad (días)</label><input class="input" name="staleDays" type="number" min="1" max="60" required value="${n(db.settings.staleDays)}"/></div><button class="btn primary" type="submit">${ic('save')} Guardar parámetros</button></form></section><section class="card"><div class="card-header"><h3>Datos y seguridad</h3></div><div class="stack">${btn('Administrar usuarios y roles','view:users','primary')}<div class="modal-note"><b>Almacenamiento compartido activo.</b><br>Integrantes, proyectos, actividades, carga semanal, notas, historial, reuniones, ausencias y parámetros se sincronizan con Supabase. El navegador conserva además una copia local de respaldo.</div>${btn(ic('download')+' Descargar respaldo JSON','backup')}${btn(ic('upload')+' Importar respaldo JSON','import')}${btn('Vaciar todos los registros','clear-all','danger')}<p class="muted tiny">El respaldo incluye integrantes, proyectos, tareas, reuniones, ausencias, fechas e historial. Importar reemplaza los registros locales actuales.</p></div></section><section class="card"><div class="card-header"><h3>Integrantes</h3>${btn(ic('plus')+' Integrante','new-member','small')}</div>${db.members.map(m=>`<div class="between" style="padding:10px 0;border-bottom:1px solid var(--line)"><div class="flex">${avatar(m.name)}<div><b class="mini">${esc(m.name)}</b><div class="tiny muted">${m.weeklyHours} h jornada · ${integer(fixedRecurring(m)+recurringTaskHours(m.id,ui.week))} h recurrentes (${fixedRecurring(m)} fijas + ${recurringTaskHours(m.id,ui.week)} registradas)</div></div></div><button class="btn small" data-action="member:${m.id}">Editar</button></div>`).join('')}</section><section class="card"><div class="card-header"><h3>Ausencias / horas no disponibles</h3>${btn(ic('plus')+' Registrar','new-absence','small')}</div>${db.absences.slice().reverse().map(a=>`<div class="between" style="padding:10px 0;border-bottom:1px solid var(--line)"><span class="mini">${esc(memberName(a.memberId))}<br><span class="muted">${niceWeek(a.week)} · ${esc(a.reason||'Ausencia')}</span></span><span>${a.hours} h <button class="mini-link" data-action="delete-absence:${a.id}">Eliminar</button></span></div>`).join('')||'<div class="empty">Sin ausencias registradas.</div>'}</section></div>`}
+function opt(list,val,labeler){return list.map(x=>{let id=typeof x==='string'?x:x.id, title=labeler?labeler(x):typeof x==='string'?x:x.name;return `<option value="${esc(id)}" ${id===val?'selected':''}>${esc(title)}</option>`}).join('')}
+function field(label,name,value='',type='text',extra=''){return `<div class="field"><label for="f-${name}">${label}</label><input class="input" id="f-${name}" name="${name}" type="${type}" value="${esc(value)}" ${extra}/></div>`}
+function selectField(label,name,options,value='',optional=false){return `<div class="field"><label for="f-${name}">${label}</label><select name="${name}" id="f-${name}">${optional?'<option value="">Ninguno / sin asignar</option>':''}${opt(options,value)}</select></div>`}
+function textareaField(label,name,value='',hint=''){return `<div class="field wide"><label for="f-${name}">${label}</label><textarea name="${name}" id="f-${name}">${esc(value)}</textarea>${hint?`<small>${esc(hint)}</small>`:''}</div>`}
+function modal(title,body,footer='',wide=false){document.getElementById('modals').innerHTML=`<div class="modal-backdrop" data-action="closeback"><div class="modal ${wide?'wide':''}" role="dialog" aria-modal="true" aria-label="${esc(title)}"><div class="modal-head"><h3>${esc(title)}</h3><button type="button" class="icon-btn" data-action="close-modal" aria-label="Cerrar">${ic('close')}</button></div><div class="modal-body">${body}</div>${footer?`<div class="modal-foot">${footer}</div>`:''}</div></div>`;}
+function closeModal(){document.getElementById('modals').innerHTML=''}
+function allocationLine(a={week:ui.week,hours:0},index=0){return `<div class="allocation-row" data-allocation><div><label>Semana que inicia lunes</label><input class="input alloc-week" type="date" value="${esc(a.week||ui.week)}" required/></div><div><label>Horas planificadas</label><input class="input alloc-hours" type="number" min="0" step="0.5" value="${n(a.hours)}" required/></div><button type="button" class="btn danger small" data-action="remove-allocation" title="Eliminar semana">${ic('trash')}</button></div>`}
+function taskForm(id='',defaults={}){let saved=db.tasks.find(t=>t.id===id),t={title:'',description:'',ownerId:db.selectedMember,projectId:'',requestArea:'Ingeniería',priority:'P3',status:'Por iniciar',start:today(),due:shift(today(),7),estimatedHours:4,remainingHours:4,allocations:[{week:ui.week,hours:4}],workType:'Proyecto / pendiente',blocker:'',decisionRequired:false,evidenceUrl:'',meetingId:'',...defaults,...saved};let h=`<form id="taskForm" data-id="${esc(id)}"><div class="form-grid">${field('Nombre de la actividad *','title',t.title,'text','required maxlength="180"')}${selectField('Responsable *','ownerId',db.members.filter(m=>m.active||m.id===t.ownerId),t.ownerId,true)}${selectField('Proyecto relacionado','projectId',db.projects,t.projectId,true)}${selectField('Área solicitante','requestArea',areas,t.requestArea)}${selectField('Tipo de trabajo','workType',['Proyecto / pendiente','Soporte a producción','Reuniones / gestión recurrente','Otra actividad recurrente'],t.workType||'Proyecto / pendiente')}<div class="field wide"><small>El soporte y otras actividades recurrentes descuentan automáticamente sus horas semanales de la disponibilidad. No los incluyas también en las horas fijas del integrante.</small></div>${selectField('Prioridad','priority',priorities,t.priority)}${selectField('Estado','status',statuses,t.status)}${field('Fecha de inicio','start',t.start,'date')}${field('Fecha compromiso *','due',t.due,'date','required')}${field('Horas estimadas totales','estimatedHours',t.estimatedHours,'number','min="0" step="0.5"')}${field('Horas pendientes estimadas','remainingHours',t.remainingHours,'number','min="0" step="0.5"')}${textareaField('Descripción / resultado esperado','description',t.description)}${textareaField('Bloqueo o dependencia (obligatorio si está bloqueado)','blocker',t.blocker)}<div class="field wide"><label class="checkbox-line"><input type="checkbox" name="decisionRequired" ${t.decisionRequired?'checked':''}/> Requiere decisión o autorización de responsable de Ingeniería</label></div>${field('Enlace de evidencia (https://...)','evidenceUrl',t.evidenceUrl,'url','placeholder="https://..."')}${t.meetingId?`<input type="hidden" name="meetingId" value="${esc(t.meetingId)}"/>`:''}</div><div class="divider"></div><div class="between wrap"><div><b>Distribución de carga semanal</b><div class="muted tiny">Registra las horas por semana: proyectos suman carga; soporte recurrente reduce horas disponibles, sin contarlo dos veces.</div></div><button type="button" class="btn small" data-action="add-allocation">${ic('plus')} Agregar semana</button></div><div id="allocations" style="margin-top:12px">${(t.allocations||[]).map(allocationLine).join('')}</div><div class="modal-note" style="margin-top:12px">La fecha compromiso original queda guardada en el historial y no se reemplaza al reprogramar.</div></form>`;modal(id?'Editar pendiente':'Crear pendiente',h,`<button class="btn" data-action="close-modal">Cancelar</button><button class="btn primary" type="submit" form="taskForm">${ic('save')} Guardar pendiente</button>`,true)}
+function taskDetail(id){let t=db.tasks.find(x=>x.id===id);if(!t){toast('Pendiente no encontrado',true);return}let logs=(t.history||[]).slice().reverse();let evidence=/^https?:\/\//i.test(t.evidenceUrl||'')?`<a href="${esc(t.evidenceUrl)}" target="_blank" rel="noopener noreferrer">${ic('link')} Ver evidencia</a>`:t.evidenceUrl?'Enlace no válido':'';let body=`<div class="between wrap" style="margin-bottom:13px">${sb(t.priority+' · '+prioLabel[t.priority],prioColor(t.priority))}${sb(t.status,statusColor(t.status))}${sb(t.workType||'Proyecto / pendiente','gray')}${overdue(t)?sb('Vencido','red'):''}</div><div class="grid g2"><div class="lightbox"><div class="tiny muted">Responsable</div><b>${esc(memberName(t.ownerId))}</b></div><div class="lightbox"><div class="tiny muted">Proyecto</div><b>${esc(projectName(t.projectId))}</b></div><div class="lightbox"><div class="tiny muted">Compromiso actual</div><b>${fmt(t.due)}</b></div><div class="lightbox"><div class="tiny muted">Compromiso original</div><b>${fmt(t.originalDue)}</b></div></div><div class="section"><b>Descripción / resultado esperado</b><p class="mini muted">${esc(t.description)||'Sin descripción'}</p>${t.blocker?`<div class="callout"><b>Bloqueo / dependencia:</b> ${esc(t.blocker)}</div>`:''}${t.decisionRequired?`<div class="modal-note" style="margin-top:10px">Requiere decisión del responsable de Ingeniería.</div>`:''}${evidence?`<p>${evidence}</p>`:''}</div><div class="section lightbox"><div class="between"><b>Horas estimadas restantes</b><b>${n(t.remainingHours)} h</b></div><div class="divider"></div>${(t.allocations||[]).map(a=>`<div class="between mini"><span>${niceWeek(a.week)}</span><b>${a.hours} h</b></div>`).join('')||'<div class="mini muted">Sin horas programadas</div>'}</div><div class="section"><div class="between"><b>Actualización rápida</b><span class="muted tiny">Los cambios se registran en el historial</span></div><form id="quickStatus" data-id="${esc(t.id)}" class="flex wrap" style="margin-top:9px"><select name="status" style="flex:1;min-width:130px">${opt(statuses,t.status)}</select><input class="input" name="remainingHours" type="number" step="0.5" min="0" value="${n(t.remainingHours)}" style="flex:1;min-width:105px" title="Horas pendientes"/><button type="submit" class="btn primary">Actualizar</button></form></div><div class="section"><b>Notas y seguimiento</b><form id="noteForm" data-id="${esc(t.id)}" class="stack" style="margin:10px 0"><textarea name="note" required placeholder="Registrar avance, acuerdo, resultado o causa de bloqueo..."></textarea><button class="btn small" type="submit">Agregar nota</button></form>${(t.notes||[]).slice().reverse().map(x=>`<div class="lightbox" style="margin-top:7px"><div class="tiny muted">${esc(x.by)} · ${new Date(x.at).toLocaleString('es-GT')}</div><div class="mini">${esc(x.text).replace(/\n/g,'<br>')}</div></div>`).join('')}</div><div class="section"><b>Historial de cambios</b><div style="margin-top:10px">${logs.map(x=>`<div class="history-line"><b>${esc(x.action)}</b><span>${esc(x.by)} · ${new Date(x.at).toLocaleString('es-GT')}</span></div>`).join('')}</div></div>`;modal(t.title,body,`<button class="btn danger" data-action="delete-task:${t.id}">${ic('trash')} Eliminar</button><button class="btn" data-action="close-modal">Cerrar</button><button class="btn primary" data-action="edit-task:${t.id}">${ic('edit')} Editar</button>`,true)}
+function projectForm(id=''){let p=db.projects.find(x=>x.id===id)||{name:'',category:categories[0],ownerId:db.selectedMember,status:'Planificado',start:today(),due:shift(today(),30),goal:'',expectedSavings:0,actualSavings:0,expectedCapacity:'',result:''};let content=`<form id="projectForm" data-id="${esc(id)}"><div class="form-grid">${field('Nombre del proyecto *','name',p.name,'text','required maxlength="180"')}${selectField('Categoría','category',categories,p.category)}${selectField('Responsable','ownerId',db.members.filter(m=>m.active||m.id===p.ownerId),p.ownerId,true)}${selectField('Estado','status',['Planificado','En ejecución','En pausa','Finalizado','Cancelado'],p.status)}${field('Inicio','start',p.start,'date')}${field('Fecha objetivo','due',p.due,'date')}${textareaField('Objetivo y alcance','goal',p.goal)}${field('Ahorro esperado mensual (Q)','expectedSavings',p.expectedSavings,'number','min="0" step="0.01"')}${field('Ahorro real mensual (Q)','actualSavings',p.actualSavings,'number','min="0" step="0.01"')}${field('Capacidad adicional esperada (texto)','expectedCapacity',p.expectedCapacity)}${textareaField('Resultado documentado','result',p.result)}</div></form>`;modal(id?'Editar proyecto':'Nuevo proyecto',content,`<button class="btn" data-action="close-modal">Cancelar</button><button class="btn primary" type="submit" form="projectForm">Guardar proyecto</button>`)}
+function projectDetail(id){let p=proj(id);if(!p)return;let tasks=db.tasks.filter(t=>t.projectId===id),pct=percentProject(id);modal(p.name,`<div class="between wrap">${sb(p.status,p.status==='Finalizado'?'green':'blue')}${sb(p.category,'gray')}</div><p class="muted">${esc(p.goal||'Sin objetivo definido')}</p><div class="between"><b>Avance por actividades</b><b>${pct}%</b></div><div class="progress" style="margin:9px 0 16px"><div class="bar-blue" style="width:${pct}%"></div></div><div class="grid g2"><div class="lightbox"><div class="tiny muted">Responsable</div><b>${esc(memberName(p.ownerId))}</b></div><div class="lightbox"><div class="tiny muted">Fecha objetivo</div><b>${fmt(p.due)}</b></div><div class="lightbox"><div class="tiny muted">Ahorro esperado (Q/mes)</div><b>${money(p.expectedSavings)}</b></div><div class="lightbox"><div class="tiny muted">Ahorro real (Q/mes)</div><b>${money(p.actualSavings)}</b></div></div><div class="section"><b>Resultados</b><p class="mini muted">${esc(p.result||'Sin documentar')} ${p.expectedCapacity?` · Capacidad esperada: ${esc(p.expectedCapacity)}`:''}</p></div><div class="section"><div class="between"><b>Actividades del proyecto</b><button class="btn small" data-action="project-add-task:${id}">${ic('plus')} Actividad</button></div><div style="margin-top:10px">${tasks.map(smallRow).join('')||'<div class="empty">Crea las actividades que componen el proyecto.</div>'}</div></div>`,`<button class="btn danger" data-action="delete-project:${id}">Eliminar</button><button class="btn" data-action="close-modal">Cerrar</button><button class="btn primary" data-action="edit-project:${id}">Editar proyecto</button>`,true)}
+function memberForm(id=''){let m=mem(id)||{name:'',role:'Ingeniero',username:'',email:'',weeklyHours:40,recurringHours:0,active:true,color:'#2463db',accessRole:'engineer'};modal(id?'Editar usuario':'Nuevo usuario',`<form id="memberForm" data-id="${esc(id)}"><div class="form-grid">${field('Nombre *','name',m.name,'text','required maxlength="90"')}${field('Rol / especialidad','role',m.role)}${field('Nombre de usuario *','username',m.username||'','text','required minlength="3" maxlength="32" placeholder="Ej. ing.carlos" autocapitalize="none" spellcheck="false"')}${field(id?'Nueva contraseña (dejar vacío para conservar)':'Contraseña inicial *','password','','password',`${id?'':'required '}minlength="8" maxlength="80" autocomplete="new-password"`)}${field('Correo para Outlook (opcional)','email',m.email||'','email','maxlength="200" placeholder="nombre@empresa.com"')}<div class="field"><label>Rol del perfil</label><select name="accessRole"><option value="engineer" ${!m.accessRole||m.accessRole==='engineer'?'selected':''}>Ingeniero</option><option value="admin" ${m.accessRole==='admin'?'selected':''}>Administrador + Mi trabajo</option><option value="viewer" ${m.accessRole==='viewer'?'selected':''}>Consulta</option></select></div><div class="field"><label>Visibilidad del calendario</label><select name="calendarVisibility"><option value="own" ${!m.calendarVisibility||m.calendarVisibility==='own'?'selected':''}>Personal · administrador ve carga</option><option value="admin" ${m.calendarVisibility==='admin'?'selected':''}>Título / fecha / duración con administrador</option></select><small>Cada usuario conectará su propio Outlook desde Calendario.</small></div>${field('Horas de jornada semanal','weeklyHours',m.weeklyHours,'number','min="0" max="168" step="0.5" required')}${field('Horas fijas no disponibles','recurringHours',m.recurringHours,'number','min="0" max="168" step="0.5" required')}<div class="field wide"><label class="checkbox-line"><input type="checkbox" name="active" ${m.active?'checked':''}/> Usuario activo</label><small>Las actividades como Soporte a producción se descuentan dinámicamente por semana y no deben duplicarse aquí.</small></div><div class="field wide"><div class="local-security-note">Las contraseñas se guardan únicamente como hash. Los usuarios y datos operativos se comparten mediante el backend seguro de Supabase; la clave de servicio no se expone en este HTML.</div></div></div></form>`,`<button class="btn" data-action="close-modal">Cancelar</button><button class="btn primary" type="submit" form="memberForm">Guardar usuario</button>`)}
+function passwordForm(){let m=loginUser();if(!m)return;modal('Cambiar contraseña',`<form id="passwordForm"><div class="form-grid"><div class="field wide"><label>Contraseña actual</label><input class="input" name="currentPassword" type="password" autocomplete="current-password" required></div><div class="field wide"><label>Nueva contraseña</label><input class="input" name="newPassword" type="password" minlength="8" maxlength="80" autocomplete="new-password" required></div><div class="field wide"><label>Confirmar nueva contraseña</label><input class="input" name="confirmPassword" type="password" minlength="8" maxlength="80" autocomplete="new-password" required></div></div></form>`,`<button class="btn" data-action="close-modal">Cancelar</button><button class="btn primary" type="submit" form="passwordForm">Actualizar contraseña</button>`)}
+function memberDetail(id){let m=mem(id);if(!m)return;let w=ui.week,h=loadHours(id,w),c=capacity(m,w),tasks=db.tasks.filter(t=>t.ownerId===id&&active(t));modal(m.name,`<div class="between">${sb(m.role||'Ingeniería','blue')}${sb(m.accessRole==='admin'?'Administrador':m.accessRole==='viewer'?'Consulta':'Ingeniero','gray')}${loadBadge(ratio(h,c))}</div><div class="grid g2 section"><div class="lightbox"><div class="tiny muted">Capacidad para proyectos</div><b>${c} h</b></div><div class="lightbox"><div class="tiny muted">Carga de proyectos y pendientes</div><b>${h} h</b></div><div class="lightbox"><div class="tiny muted">Recurrentes fijas</div><b>${fixedRecurring(m)} h</b></div><div class="lightbox"><div class="tiny muted">Recurrentes registradas · semana</div><b>${recurringTaskHours(id,w)} h</b></div></div><div class="section"><b>Actividades activas</b>${tasks.map(smallRow).join('')||'<div class="empty">Sin actividades activas.</div>'}</div>`,`<button class="btn" data-action="close-modal">Cerrar</button><button class="btn primary" data-action="edit-member:${id}">Editar capacidad / integrante</button>`,true)}
+function absenceForm(){modal('Registrar horas no disponibles',`<form id="absenceForm" class="form-grid">${selectField('Integrante','memberId',db.members.filter(x=>x.active),db.selectedMember)}${field('Semana (lunes)','week',ui.week,'date','required')}${field('Horas no disponibles','hours',8,'number','min="0.5" step="0.5" required')}${field('Motivo','reason','Vacaciones / permiso')}</form>`,`<button class="btn" data-action="close-modal">Cancelar</button><button class="btn primary" type="submit" form="absenceForm">Registrar</button>`)}
+function meetingForm(id=''){let m=db.meetings.find(x=>x.id===id)||{title:'',date:today(),notes:'',participants:[]};modal(id?'Editar reunión':'Nueva reunión',`<form id="meetingForm" data-id="${esc(id)}" class="form-grid">${field('Tema de la reunión *','title',m.title,'text','required')}${field('Fecha','date',m.date,'date','required')}${textareaField('Minuta, acuerdos y decisiones','notes',m.notes)}<div class="field wide"><label>Participantes</label>${db.members.map(x=>`<label class="checkbox-line"><input type="checkbox" name="participants" value="${x.id}" ${(m.participants||[]).includes(x.id)?'checked':''}/> ${esc(x.name)}</label>`).join('')}</div></form>`,`<button class="btn" data-action="close-modal">Cancelar</button><button class="btn primary" type="submit" form="meetingForm">Guardar reunión</button>`)}
+function meetingDetail(id){let m=db.meetings.find(x=>x.id===id);if(!m)return;let tasks=db.tasks.filter(t=>t.meetingId===id);modal(m.title,`<div class="between">${sb(fmt(m.date),'blue')}<span class="muted mini">${m.participants.map(memberName).map(esc).join(', ')}</span></div><div class="lightbox section" style="white-space:pre-wrap">${esc(m.notes||'Sin notas registradas')}</div><div class="section"><div class="between"><b>Acuerdos y compromisos</b><button class="btn small" data-action="meeting-add-task:${id}">${ic('plus')} Nuevo acuerdo</button></div>${tasks.map(smallRow).join('')||'<div class="empty">Todavía no hay acuerdos convertidos en tareas.</div>'}</div>`,`<button class="btn danger" data-action="delete-meeting:${id}">Eliminar</button><button class="btn" data-action="close-modal">Cerrar</button><button class="btn primary" data-action="edit-meeting:${id}">Editar reunión</button>`,true)}
+function simulator(){let w=ui.week,people=db.members.filter(m=>m.active);modal('Simular nueva asignación',`<div class="modal-note">Calcula la carga proyectada ANTES de asignar una actividad. El cálculo no crea ni modifica tareas hasta que elijas crear una.</div><div class="form-grid section"><div class="field"><label>Horas para la nueva actividad</label><input id="simHours" class="input" type="number" min="0.5" step="0.5" value="8"/></div><div class="field"><label>Semana</label><input id="simWeek" class="input" type="date" value="${w}"/></div></div><div id="simResults" class="stack section"></div>`,`<button class="btn" data-action="close-modal">Cerrar</button>`,true);updateSimulator()}
+function updateSimulator(){let hours=n(document.getElementById('simHours')?.value),w=monday(document.getElementById('simWeek')?.value||ui.week),node=document.getElementById('simResults');if(!node)return;node.innerHTML=db.members.filter(m=>m.active).map(m=>{let old=loadHours(m.id,w),c=capacity(m,w),r=ratio(old+hours,c);return `<div class="member-row"><div class="between"><b>${esc(m.name)}</b>${loadBadge(r)}</div><div class="between mini"><span>${old} h actuales + ${hours} h nuevas</span><b>${integer(old+hours)} / ${c} h · ${r}%</b></div><div class="progress"><div class="${barColor(r)}" style="width:${Math.min(100,r)}%"></div></div><div class="between"><span class="muted tiny">${r>100?'Excede disponibilidad':r>=n(db.settings.hoursWarning)?'Queda cerca del límite':'Con margen de planificación'}</span><button class="btn small" data-action="create-sim:${m.id}">Asignar a esta persona</button></div></div>`}).join('')||'<div class="empty">Agrega integrantes primero.</div>'}
+function exportFile(name,content,type){let b=new Blob([content],{type}),url=URL.createObjectURL(b),a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+function csv(rows){return '\ufeff'+rows.map(row=>row.map(v=>'"'+String(v??'').replaceAll('"','""')+'"').join(',')).join('\r\n')}
+function exportTasks(){let rows=[['ID','Pendiente','Proyecto','Responsable','Área','Prioridad','Estado','Inicio','Fecha original','Fecha actual','Horas estimadas','Horas pendientes','Tipo de trabajo','Plan semanal','Bloqueo','Requiere decisión','Descripción','Evidencia'],...db.tasks.map(t=>[t.id,t.title,projectName(t.projectId),memberName(t.ownerId),t.requestArea,t.priority,t.status,t.start,t.originalDue,t.due,t.estimatedHours,t.remainingHours,t.workType||'Proyecto / pendiente',(t.allocations||[]).map(a=>`${a.week}: ${a.hours} h`).join(' | '),t.blocker,t.decisionRequired?'Sí':'No',t.description,t.evidenceUrl])];exportFile('ingenieria_pendientes_'+today()+'.csv',csv(rows),'text/csv;charset=utf-8');toast('Pendientes exportados a CSV compatible con Excel')}
+function exportProjects(){let rows=[['Proyecto','Categoría','Responsable','Estado','Inicio','Fecha objetivo','Avance %','Ahorro esperado mensual Q','Ahorro real mensual Q','Capacidad esperada','Objetivo','Resultado'],...db.projects.map(p=>[p.name,p.category,memberName(p.ownerId),p.status,p.start,p.due,percentProject(p.id),p.expectedSavings,p.actualSavings,p.expectedCapacity,p.goal,p.result])];exportFile('ingenieria_proyectos_'+today()+'.csv',csv(rows),'text/csv;charset=utf-8');toast('Proyectos exportados a CSV')}
+function backup(){exportFile('ingenieria_control_respaldo_'+today()+'.json',JSON.stringify(db,null,2),'application/json');toast('Respaldo descargado')}
+function record(t,action){t.updatedAt=new Date().toISOString();t.history=t.history||[];t.history.push({at:t.updatedAt,by:currentMember()?.name||'Usuario local',action})}
+function confirmAct(text){return window.confirm(text)}
+async function handleAction(action){let [key,...rest]=action.split(':'),id=rest.join(':');if(key==='view'){if(!isAdmin()&&!['my','calendar'].includes(id))return;ui.view=id;ui.menu=false;render();window.scrollTo(0,0);return}if(key==='toggle-theme'){applyTheme(appTheme==='dark'?'light':'dark');render();return}if(key==='menu'){ui.menu=!ui.menu;render();return}if(key==='closemenu'){ui.menu=false;render();return}if(key==='close-modal'){closeModal();return}if(key==='logout'){try{if(remoteToken)await remoteCall('logout')}catch(e){}remoteToken='';sessionStorage.removeItem(REMOTE_TOKEN_KEY);sessionStorage.removeItem(AUTH_SESSION_KEY);authMemberId='';ui.view='dashboard';closeModal();render();return}if(key==='change-password'){passwordForm();return}if(key==='new-task'){taskForm();return}if(key==='new-support'){taskForm('',{title:'Soporte a producción',requestArea:'Producción',workType:'Soporte a producción',ownerId:db.selectedMember||db.members.find(m=>m.active)?.id||'',allocations:[{week:ui.week,hours:4}]});return}if(key==='task'){let t=db.tasks.find(x=>x.id===id);if(!isAdmin()&&t?.ownerId!==loginUser()?.id)return;taskDetail(id);return}if(key==='edit-task'){let t=db.tasks.find(x=>x.id===id);if(!isAdmin()&&t?.ownerId!==loginUser()?.id)return;taskForm(id);return}if(key==='new-project'){projectForm();return}if(key==='project'){projectDetail(id);return}if(key==='edit-project'){projectForm(id);return}if(key==='project-add-task'){taskForm('',{projectId:id});return}if(key==='new-member'){memberForm();return}if(key==='new-admin'){memberForm();let r=document.querySelector('#memberForm [name="accessRole"]');if(r)r.value='admin';return}if(key==='preview-member'){if(!mem(id))return;ui.prePreviewMember=db.selectedMember;db.selectedMember=id;ui.preview=true;ui.view='my';save();closeModal();render();return}if(key==='exit-preview'){ui.preview=false;db.selectedMember=mem(ui.prePreviewMember)?.id||adminMember()?.id||db.selectedMember;ui.prePreviewMember='';save();ui.view='users';render();return}if(key==='my-profile'){if(!adminMember()){toast('Primero marca tu usuario como administrador',true);ui.view='users';render();return}ui.preview=false;db.selectedMember=adminMember().id;save();ui.view='my';render();return}if(key==='set-admin'){let m=mem(id);if(!m)return;db.adminMemberId=id;m.accessRole='admin';db.selectedMember=id;save();render();toast('Tu perfil administrador quedó asignado. Ya puedes entrar a Mi trabajo.');return}if(key==='outlook-connect'){let m=mem(id)||currentMember();if(!isAdmin()&&m?.id!==loginUser()?.id)return;modal('Outlook de '+esc(m?.name||'Ingeniería'),`<div class="stack"><span class="pill amber">Conexión preparada</span><p><b>${esc(m?.name||'El usuario')}</b> conectará su propio Outlook desde este botón.</p><p class="muted mini">La experiencia será: Conectar Outlook → seleccionar cuenta corporativa → autorizar → regresar a INGENIERÍA | CONTROL. La aplicación consultará título, fecha y duración de las reuniones al abrirse.</p><div class="modal-note">No necesitas Python para este flujo. La conexión real se activará cuando tengamos las credenciales de autorización web de Microsoft 365 de la empresa.</div></div>`,`<button class="btn primary" data-action="close-modal">Entendido</button>`);return}if(key==='integration-help'){modal('Activación de acceso compartido y Outlook',`<div class="stack"><p><b>Hoy:</b> puedes trabajar sin Python con cuentas locales dentro de este HTML.</p><p><b>Para compartir:</b> después conectaremos una base web para que todos usen los mismos usuarios y datos desde distintas computadoras.</p><p><b>Outlook:</b> cada ingeniero lo conectará personalmente desde Calendario. No utilizará su contraseña de INGENIERÍA | CONTROL para Outlook.</p><div class="modal-note">La contraseña del sistema y la autorización de Outlook son independientes.</div></div>`);return}if(key==='member'){memberDetail(id);return}if(key==='edit-member'){memberForm(id);return}if(key==='new-meeting'){meetingForm();return}if(key==='meeting'){meetingDetail(id);return}if(key==='edit-meeting'){meetingForm(id);return}if(key==='meeting-add-task'){taskForm('',{meetingId:id,description:'Acuerdo de reunión'});return}if(key==='new-absence'){absenceForm();return}if(key==='simulate'){simulator();return}if(key==='add-allocation'){document.getElementById('allocations')?.insertAdjacentHTML('beforeend',allocationLine({week:ui.week,hours:0}));return}if(key==='remove-allocation'){let row=document.activeElement.closest('[data-allocation]');row?.remove();return}if(key==='task-view'){ui.taskView=id;render();return}if(key==='clear-filters'){ui.search=ui.owner=ui.status=ui.project=ui.priority='';render();return}if(key==='week'){ui.week=id==='today'?weekToday():shift(ui.week,n(id)*7);render();return}if(key==='month'){if(id==='today')ui.month=today().slice(0,7);else{let d=date(ui.month+'-01');d.setMonth(d.getMonth()+n(id));ui.month=iso(d).slice(0,7)}render();return}if(key==='create-sim'){let hours=n(document.getElementById('simHours')?.value);if(hours<=0){toast('Ingresa horas positivas',true);return}let w=monday(document.getElementById('simWeek')?.value||ui.week);taskForm('',{ownerId:id,estimatedHours:hours,remainingHours:hours,allocations:[{week:w,hours}]});return}if(key==='backup'){backup();return}if(key==='import'){document.getElementById('backupFile').click();return}if(key==='export-tasks'){exportTasks();return}if(key==='export-projects'){exportProjects();return}if(key==='print'){window.print();return}
+if(key==='delete-task'){if(!confirmAct('¿Eliminar este pendiente y su historial? Esta acción no puede deshacerse sin un respaldo.'))return;try{await remoteCall('delete',{type:'task',id})}catch(e){toast('No se pudo eliminar: '+e.message,true);return}db.tasks=db.tasks.filter(t=>t.id!==id);cacheLocal();closeModal();render();toast('Pendiente eliminado');return}
+if(key==='delete-project'){if(db.tasks.some(t=>t.projectId===id)){toast('No puedes eliminar un proyecto con actividades. Reasígnalas primero.',true);return}if(!confirmAct('¿Eliminar este proyecto?'))return;try{await remoteCall('delete',{type:'project',id})}catch(e){toast('No se pudo eliminar: '+e.message,true);return}db.projects=db.projects.filter(p=>p.id!==id);cacheLocal();closeModal();render();toast('Proyecto eliminado');return}
+if(key==='delete-meeting'){if(!confirmAct('¿Eliminar reunión? Los acuerdos seguirán existiendo como pendientes.'))return;try{await remoteCall('delete',{type:'meeting',id})}catch(e){toast('No se pudo eliminar: '+e.message,true);return}db.tasks.filter(t=>t.meetingId===id).forEach(t=>{t.meetingId='';record(t,'Reunión vinculada eliminada')});db.meetings=db.meetings.filter(m=>m.id!==id);save();closeModal();render();toast('Reunión eliminada');return}
+if(key==='delete-absence'){if(!confirmAct('¿Eliminar registro de ausencia?'))return;try{await remoteCall('delete',{type:'absence',id})}catch(e){toast('No se pudo eliminar: '+e.message,true);return}db.absences=db.absences.filter(a=>a.id!==id);cacheLocal();render();toast('Ausencia eliminada');return}
+if(key==='clear-all'){if(!confirmAct('¿Vaciar TODOS los datos compartidos, incluidos integrantes, proyectos, actividades, reuniones y sus historiales? Descarga un respaldo antes si deseas conservar algo.'))return;try{await remoteCall('clear_all');await refreshRemoteState()}catch(e){toast('No se pudo vaciar la base compartida: '+e.message,true);return}ui.view='dashboard';ui.week=weekToday();ui.search=ui.status=ui.owner=ui.project=ui.priority='';closeModal();render();toast('Registros compartidos vaciados.');return}}
+function changes(old,t){if(!old)return'Pendiente creado';let names={title:'nombre',ownerId:'responsable',projectId:'proyecto',priority:'prioridad',status:'estado',due:'fecha compromiso',remainingHours:'horas pendientes',allocations:'plan semanal',workType:'tipo de trabajo',decisionRequired:'decisión requerida',blocker:'bloqueo'};let diff=Object.keys(names).filter(k=>JSON.stringify(old[k])!==JSON.stringify(t[k])).map(k=>names[k]);return diff.length?'Modificado: '+diff.join(', '):'Ficha actualizada'}
+async function onSubmit(form){let fd=new FormData(form),v=k=>String(fd.get(k)||'').trim(),id=form.dataset.id||'';
+if(form.id==='taskForm'){let title=v('title'),ownerId=isAdmin()?v('ownerId'):loginUser()?.id,due=v('due'),status=v('status'),blocker=v('blocker');if(!title||!due){toast('Nombre y fecha compromiso son obligatorios',true);return}if(ownerId&&!mem(ownerId)){toast('Responsable no válido',true);return}if(status==='Bloqueado'&&!blocker){toast('Describe el motivo del bloqueo para guardar.',true);return}let allocationRows=[...form.querySelectorAll('[data-allocation]')],allocations=[];for(let row of allocationRows){let wk=row.querySelector('.alloc-week').value,h=Number(row.querySelector('.alloc-hours').value);if(!wk||!Number.isFinite(h)||h<0){toast('Revisa la planificación semanal',true);return}if(h)allocations.push({week:monday(wk),hours:h})}let combined=new Map();for(let a of allocations)combined.set(a.week,integer((combined.get(a.week)||0)+a.hours));allocations=[...combined].map(([week,hours])=>({week,hours})).sort((a,b)=>a.week.localeCompare(b.week));let evidence=v('evidenceUrl');if(evidence&&!/^https?:\/\/[^\s]+$/i.test(evidence)){toast('El enlace de evidencia debe comenzar con http:// o https://',true);return}let prev=db.tasks.find(t=>t.id===id),ts=new Date().toISOString(),t={...prev,id:prev?.id||uid('t'),title,description:v('description'),projectId:v('projectId'),ownerId,requestArea:v('requestArea'),workType:v('workType')||'Proyecto / pendiente',priority:v('priority'),status,start:v('start'),due,originalDue:prev?.originalDue||due,estimatedHours:n(v('estimatedHours')),remainingHours:status==='Finalizado'?0:n(v('remainingHours')),allocations,blocker,decisionRequired:fd.has('decisionRequired'),evidenceUrl:evidence,meetingId:v('meetingId')||prev?.meetingId||'',createdAt:prev?.createdAt||ts,updatedAt:ts,completedAt:status==='Finalizado'?(prev?.completedAt||ts):'',notes:prev?.notes||[],history:prev?.history||[]};if(t.estimatedHours<0||t.remainingHours<0){toast('Las horas no pueden ser negativas',true);return}record(t,changes(prev,t));if(prev)db.tasks=db.tasks.map(x=>x.id===id?t:x);else db.tasks.push(t);let weeks=allocations.filter(a=>t.ownerId&&active(t)&&((isRecurring(t)?loadHours(t.ownerId,a.week,t.id):a.hours+loadHours(t.ownerId,a.week,t.id))>capacity(mem(t.ownerId),a.week,t.id)-(isRecurring(t)?a.hours:0))).map(a=>niceWeek(a.week));save();closeModal();render();toast(weeks.length?'Pendiente guardado · Revisa sobrecarga en '+weeks.join(', '):'Pendiente guardado');return}
+if(form.id==='quickStatus'){let t=db.tasks.find(x=>x.id===id);if(!t)return;let s=v('status'),hours=n(v('remainingHours'));if(s==='Bloqueado'&&!t.blocker){toast('Edita la actividad y registra el motivo del bloqueo antes.',true);return}if(hours<0){toast('Las horas no pueden ser negativas',true);return}let old=t.status;t.status=s;t.remainingHours=s==='Finalizado'?0:hours;t.completedAt=s==='Finalizado'?(t.completedAt||new Date().toISOString()):'';record(t,`Estado: ${old} → ${s}; horas pendientes: ${t.remainingHours}`);save();closeModal();render();taskDetail(id);toast('Estado actualizado');return}
+if(form.id==='noteForm'){let t=db.tasks.find(x=>x.id===id);if(!t||!v('note'))return;t.notes=t.notes||[];t.notes.push({at:new Date().toISOString(),by:currentMember()?.name||'Usuario local',text:v('note')});record(t,'Nota de seguimiento agregada');save();closeModal();render();taskDetail(id);toast('Nota agregada');return}
+if(form.id==='projectForm'){if(!v('name')){toast('Escribe el nombre del proyecto',true);return}let prev=proj(id),p={...prev,id:prev?.id||uid('p'),name:v('name'),category:v('category'),ownerId:v('ownerId'),status:v('status'),start:v('start'),due:v('due'),goal:v('goal'),expectedSavings:n(v('expectedSavings')),actualSavings:n(v('actualSavings')),expectedCapacity:v('expectedCapacity'),result:v('result'),createdAt:prev?.createdAt||new Date().toISOString()};if(prev)db.projects=db.projects.map(x=>x.id===id?p:x);else db.projects.push(p);save();closeModal();render();toast('Proyecto guardado');return}
+if(form.id==='memberForm'){
+  if(!isAdmin()){toast('Solo el administrador puede crear o editar usuarios',true);return}
+  if(!v('name')){toast('El nombre es obligatorio',true);return}
+  let hrs=n(v('weeklyHours')),rec=n(v('recurringHours'));if(hrs<0||rec<0||rec>hrs){toast('Las horas recurrentes deben estar entre 0 y la jornada',true);return}
+  let username=v('username').toLowerCase(),password=v('password'),email=v('email').toLowerCase(),accessRole=v('accessRole')||'engineer';
+  if(!/^[a-z0-9][a-z0-9._-]{2,31}$/.test(username)){toast('El usuario debe tener 3–32 caracteres: letras, números, punto, guion o guion bajo',true);return}
+  if(db.members.some(x=>x.id!==id&&(x.username||'').toLowerCase()===username)){toast('Ese nombre de usuario ya existe',true);return}
+  if(!id&&password.length<8){toast('La contraseña inicial debe tener al menos 8 caracteres',true);return}
+  if(password&&password.length<8){toast('La contraseña debe tener al menos 8 caracteres',true);return}
+  if(email&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){toast('Revisa el correo de Outlook',true);return}
+  if(email&&db.members.some(x=>x.id!==id&&x.email?.toLowerCase()===email)){toast('Ese correo ya está asignado a otro perfil',true);return}
+  let prev=mem(id),m={...prev,id:prev?.id||uid('m'),name:v('name'),role:v('role'),username,email,calendarVisibility:v('calendarVisibility')||'own',accessRole,outlookStatus:prev?.outlookStatus||'not_connected',weeklyHours:hrs,recurringHours:rec,active:fd.has('active'),color:prev?.color||'#2463db'};
+  if(password){m.passwordHash=await passwordHash(password);m.hasPassword=true;m.mustChangePassword=true}else if(!prev&&!m.passwordHash){toast('Debes definir una contraseña inicial',true);return}
+  if(prev)db.members=db.members.map(x=>x.id===id?m:x);else db.members.push(m);
+  if(m.accessRole==='admin'&&!mem(db.adminMemberId)){db.adminMemberId=m.id}
+  if(m.id===db.adminMemberId)m.accessRole='admin';
+  if(!mem(db.selectedMember)||!currentMember()?.active)db.selectedMember=db.members.find(x=>x.active)?.id||m.id;
+  save();closeModal();render();toast('Usuario guardado');return}
+if(form.id==='passwordForm'){
+  let m=loginUser();if(!m)return;
+  let current=v('currentPassword'),next=v('newPassword'),confirm=v('confirmPassword');
+  if(next.length<8){toast('La nueva contraseña debe tener al menos 8 caracteres',true);return}
+  if(next!==confirm){toast('Las contraseñas nuevas no coinciden',true);return}
+  try{await remoteCall('change_password',{currentPassword:current,newPasswordHash:await passwordHash(next)})}catch(e){toast(e.message||'No se pudo cambiar la contraseña',true);return}
+  m.mustChangePassword=false;m.hasPassword=true;delete m.passwordHash;cacheLocal();closeModal();render();toast('Contraseña actualizada');return}
+if(form.id==='absenceForm'){let memberId=v('memberId'),week=v('week'),hours=n(v('hours'));if(!mem(memberId)||!week||hours<=0){toast('Completa los datos de la ausencia',true);return}db.absences.push({id:uid('a'),memberId,week:monday(week),hours,reason:v('reason')});save();closeModal();render();toast('Horas no disponibles registradas');return}
+if(form.id==='meetingForm'){if(!v('title')||!v('date')){toast('Escribe un tema y fecha',true);return}let prev=db.meetings.find(x=>x.id===id),m={...prev,id:prev?.id||uid('mt'),title:v('title'),date:v('date'),notes:v('notes'),participants:fd.getAll('participants'),createdAt:prev?.createdAt||new Date().toISOString()};if(prev)db.meetings=db.meetings.map(x=>x.id===id?m:x);else db.meetings.push(m);save();closeModal();render();toast('Reunión guardada');return}
+if(form.id==='integrationForm'){db.integration={...db.integration,tenantId:v('tenantId'),clientId:v('clientId'),calendarSync:'on_open',calendarFields:['subject','start','end'],status:'not_connected'};save();render();toast('Identificadores guardados en este navegador; Outlook aún no está conectado');return}
+if(form.id==='settingsForm'){let warn=n(v('hoursWarning')),days=n(v('staleDays'));if(warn<1||warn>100||days<1||days>60){toast('Revisa los parámetros numéricos',true);return}db.settings={...db.settings,department:v('department'),hoursWarning:warn,staleDays:days};save();render();toast('Parámetros actualizados');return}}
+document.addEventListener('submit',async e=>{if(e.target.id!=='localLoginForm')return;e.preventDefault();
+  let fd=new FormData(e.target),username=String(fd.get('username')||'').trim().toLowerCase(),password=String(fd.get('password')||''),box=document.getElementById('authError');
+  if(box)box.textContent='Conectando...';
+  let localBefore=db;
+  try{
+    let r=await remoteCall('login',{username,password},false);
+    remoteToken=r.token;sessionStorage.setItem(REMOTE_TOKEN_KEY,remoteToken);authMemberId=r.member.id;sessionStorage.setItem(AUTH_SESSION_KEY,authMemberId);
+    let remoteState=migrateLocalAuth(r.state);
+    let remoteEmpty=!meaningfulLocalData(remoteState);
+    if(r.member.accessRole==='admin'&&remoteEmpty&&meaningfulLocalData(localBefore)&&confirmAct('Encontré información guardada en este navegador y la base compartida está vacía. ¿Deseas migrar ahora esos registros a Supabase?')){
+      db=migrateLocalAuth(localBefore);
+      if(!db.members.some(m=>m.id===authMemberId))db.members.push({...r.member,hasPassword:true});
+      db.selectedMember=authMemberId;await syncRemoteNow();await refreshRemoteState();
+    }else{db=remoteState;db.selectedMember=authMemberId;cacheLocal()}
+    ui.view=r.member.accessRole==='admin'?'dashboard':'my';render();
+    if(r.member.mustChangePassword)setTimeout(()=>toast('Estás usando una contraseña temporal. Puedes cambiarla desde el menú lateral.'),120);
+  }catch(err){if(box)box.textContent=err.message||'Usuario o contraseña incorrectos'}
+});
+document.addEventListener('click',e=>{let el=e.target.closest('[data-action]');if(!el)return;let act=el.dataset.action;if(act==='closeback'){if(e.target===el)closeModal();return}if(act==='remove-allocation'){el.closest('[data-allocation]')?.remove();return}if(el.closest('form')&&el.type==='submit')return;handleAction(act)});
+document.addEventListener('submit',e=>{if(['taskForm','quickStatus','noteForm','projectForm','memberForm','absenceForm','meetingForm','settingsForm','integrationForm','passwordForm'].includes(e.target.id)){e.preventDefault();onSubmit(e.target)}});
+document.addEventListener('change',e=>{let t=e.target;if(t.id==='globalMember'&&isAdmin()){db.selectedMember=t.value;save();render();return}let keys={filterStatus:'status',filterOwner:'owner',filterProject:'project',filterPriority:'priority'};if(keys[t.id]){ui[keys[t.id]]=t.value;render();return}if(t.id==='simWeek'){updateSimulator()}});
+document.addEventListener('input',e=>{if(e.target.id==='simHours'){updateSimulator();return}if(e.target.id==='taskSearch'){let pos=e.target.selectionStart;ui.search=e.target.value;render();let f=document.getElementById('taskSearch');f?.focus();f?.setSelectionRange(pos,pos);return}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+document.getElementById('backupFile').addEventListener('change',async e=>{let file=e.target.files?.[0];if(!file)return;try{let x=JSON.parse(await file.text());if(!x||x.version!==1||!Array.isArray(x.members)||!Array.isArray(x.tasks)||!Array.isArray(x.projects)||!Array.isArray(x.meetings)){throw new Error('El respaldo no tiene la estructura de INGENIERÍA | CONTROL v1')}if(!confirmAct('Importar REEMPLAZARÁ toda la información de este navegador. ¿Ya descargaste un respaldo de los datos actuales?')){e.target.value='';return}let old=db;db=migrateLocalAuth({...x,settings:{department:'INGENIERÍA',hoursWarning:85,staleDays:5,demo:false,...x.settings},absences:Array.isArray(x.absences)?x.absences:[]});if(!remoteToken){authMemberId=db.adminMemberId;sessionStorage.setItem(AUTH_SESSION_KEY,authMemberId)}if(!save()){db=old;throw new Error('No se pudo guardar el respaldo importado')}ui.view='dashboard';ui.week=weekToday();closeModal();render();toast('Respaldo importado correctamente')}catch(err){toast('No se pudo importar: '+err.message,true)}e.target.value=''});
+bootstrapRemote();
+})();
+</script></body></html>
