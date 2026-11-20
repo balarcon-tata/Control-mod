@@ -1680,17 +1680,21 @@
       { name:'PERFORADO', section:'PLANTA DE FAJAS', backend:'PERFORADOMOD' }
     ];
 
-    function currentIsoWeek() {
-      const d = new Date();
+    function currentIsoWeek(d = new Date()) {
       const u = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
       const day = u.getUTCDay() || 7;
       u.setUTCDate(u.getUTCDate() + 4 - day);
       const yearStart = new Date(Date.UTC(u.getUTCFullYear(),0,1));
       return Math.ceil((((u - yearStart) / 86400000) + 1) / 7);
     }
-    function nextEightWeeks() {
-      const start = currentIsoWeek() + 1;
-      return Array.from({length:8}, (_,i) => 'Semana ' + (start + i));
+    function nextEightWeeks(base = new Date()) {
+      const monday = new Date(base.getFullYear(), base.getMonth(), base.getDate(), 12);
+      monday.setDate(monday.getDate() + 8 - (monday.getDay() || 7));
+      return Array.from({length: 8}, () => {
+        const label = 'Semana ' + currentIsoWeek(monday);
+        monday.setDate(monday.getDate() + 7);
+        return label;
+      });
     }
     function stdForArea(name) {
       const aliases = {
