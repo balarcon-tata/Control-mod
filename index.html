@@ -1136,7 +1136,7 @@
             const input = createInput(formatMetricValue(metric.label, value), '', () => {
               metric.values[valueIndex] = input.value;
               updateAverage(stageIndex, metricIndex);
-              if (metric.role === 'balance' || metric.role === 'optimo') drawStageChart(stageIndex);
+              drawStageChart(stageIndex);
               saveSilent();
               saveManualOverride(stage.name, metric.label, stage.weeks[valueIndex], input.value);
               setDbStatus(stage._backendStatus === 'manual' ? 'Cambio manual guardado' : 'Cambio temporal; el Backend MOD prevalecerá al actualizar', 'ok');
@@ -1205,6 +1205,7 @@
         metaInput.addEventListener('change', async () => {
           stage._metaCostoUnitario = normalizeCostoMetaInput(metaInput.value);
           metaInput.value = stage._metaCostoUnitario;
+          drawStageChart(stageIndex);
           stage._metaCostoSource = 'db';
           metaSource.className = 'meta-cost-source db';
           metaSource.textContent = 'Guardando...';
@@ -1242,7 +1243,7 @@
     function resizeCanvas(canvas) {
       const box = canvas.parentElement;
       const width = Math.max(420, Math.floor(box.clientWidth - 16));
-      const height = 305;
+      const height = 465;
       const dpr = window.devicePixelRatio || 1;
       canvas.width = width * dpr;
       canvas.height = height * dpr;
@@ -1296,7 +1297,7 @@
 
       const margin = { top: 54, right: 28, bottom: 74, left: 44 };
       const plotW = width - margin.left - margin.right;
-      const plotH = height - margin.top - margin.bottom;
+      const plotH = 305 - margin.top - margin.bottom;
       const y = v => margin.top + plotH - ((v || 0) / yMax) * plotH;
       const xCenter = i => margin.left + (i + .5) * plotW / stage.weeks.length;
 
@@ -1372,12 +1373,12 @@
         });
 
         ctx.save();
-        ctx.translate(cx, height - margin.bottom + 18);
+        ctx.translate(cx, 305 - margin.bottom + 18);
         ctx.fillStyle = 'rgba(255,248,243,.96)';
         ctx.font = '12px Arial';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
-        ctx.fillText(String(week || ''), 0, 0);
+        ctx.fillText(String(week || '').replace(/^Semana\s*/i, 'S'), 0, 0);
         ctx.restore();
       });
 
@@ -1423,7 +1424,7 @@
       }
 
       // Legend
-      const legendY = height - 24;
+      const legendY = 305 - 24;
       const items = [
         { label: 'HC BALANCE', color: '#dde5ef', type: 'bar' },
         { label: 'HC ÓPTIMO', color: '#f4c9a2', type: 'bar' },
@@ -1447,6 +1448,53 @@
         ctx.fillStyle = 'rgba(255,248,243,.96)';
         ctx.fillText(item.label, lx + 34, legendY);
         lx += item.label.length * 7 + 64;
+      });
+    
+      const costRow = stage.metrics.find(row => normalizeLabel(row.label) === 'COSTO')
+        || stage.metrics.find(row => /^COSTO\b/.test(normalizeLabel(row.label)));
+      const costs = stage.weeks.map((_, i) => numberValue(costRow?.values[i]));
+      const base = numberValue(stage._metaCostoUnitario);
+      const maxCost = Math.max(base || 0, ...costs.map(v => v || 0)) || 1;
+      const top = 353, bottom = height - 32;
+      const costY = value => bottom - (bottom - top) * value / maxCost;
+      ctx.font = 'bold 12px Arial';
+      ctx.textAlign = 'left';
+      ctx.fillStyle = '#fff';
+      ctx.fillText('Costo unitario por semana', margin.left, 317);
+      ctx.textAlign = 'right';
+      ctx.fillStyle = '#ffe28f';
+      ctx.fillText('Base: ' + (base === null ? 'sin meta' : '$' + base.toFixed(4)), width - margin.right, 317);
+      if (base !== null) {
+        ctx.strokeStyle = '#ffe28f';
+        ctx.lineWidth = 2;
+        ctx.setLineDash([6, 4]);
+        ctx.beginPath();
+        ctx.moveTo(margin.left, costY(base));
+        ctx.lineTo(width - margin.right, costY(base));
+        ctx.stroke();
+        ctx.setLineDash([]);
+      }
+      ctx.strokeStyle = '#a4f3ec';
+      ctx.beginPath();
+      costs.forEach((v, i) => {
+        if (v === null) return;
+        if (!i || costs[i - 1] === null) ctx.moveTo(xCenter(i), costY(v));
+        else ctx.lineTo(xCenter(i), costY(v));
+      });
+      ctx.stroke();
+      ctx.textAlign = 'center';
+      ctx.font = 'bold 11px Arial';
+      stage.weeks.forEach((week, i) => {
+        const x = xCenter(i), v = costs[i];
+        ctx.fillStyle = '#fff';
+        ctx.fillText(String(week).replace(/^Semana\s*/i, 'S'), x, bottom + 18, groupW - 2);
+        if (v === null) return;
+        ctx.fillStyle = '#a4f3ec';
+        ctx.beginPath();
+        ctx.arc(x, costY(v), 4, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.fillStyle = '#fff';
+        ctx.fillText('$' + v.toFixed(4), x, costY(v) - 11, groupW - 2);
       });
     }
 
