@@ -1052,6 +1052,7 @@
         const titleBox = document.createElement('div');
         const title = document.createElement('h2');
         title.textContent = stage.name;
+        if (stage.name === 'FLASHCUT') title.id = 'flashcut';
         const sub = document.createElement('small');
         sub.textContent = 'Etapa ' + (stageIndex + 1) + ' de ' + state.stages.length + ' · ' + stage.weeks.length + ' semanas';
         titleBox.appendChild(title);
@@ -2168,6 +2169,8 @@
     window.addEventListener('resize', () => { resizeAllCanvases(); drawAllCharts(); });
 
     (async function initApp() {
+      state = buildBlankModState();
+      applyManualOverrides();
       seedCostoMetaDefaults();
       render();
       loadDarkFilter();
