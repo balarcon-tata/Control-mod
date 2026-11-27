@@ -1765,6 +1765,7 @@
       // CORTE TOTAL es un area 100% manual: no consulta ni recibe datos del Backend Universal MOD.
       { name:'CORTE TOTAL', section:'PLANTA DE FAJAS', manual:true },
       { name:'CORTE PLANO', section:'PLANTA DE FAJAS', backend:'CORTEPLANOMOD', special:'COST_FALLBACK_OT' },
+      { name:'FLASHCUT', section:'PLANTA DE FAJAS', backend:'CORTEPLANOMOD', special:'FLASHCUT' },
       { name:'CORTE SINTETICO', section:'PLANTA DE FAJAS', backend:'CORTESINTETICOMOD', special:'COST_FALLBACK_OT' },
       { name:'CORTE COMBINADO', section:'PLANTA DE FAJAS', backend:'CORTECOMBINADOMOD', special:'COST_FALLBACK_OT' },
       { name:'PEGADO', section:'PLANTA DE FAJAS', backend:'PEGADOMOD' },
@@ -1881,6 +1882,24 @@
       const byWeek = new Map();
       (rows||[]).forEach(r=>{const w=weekNumberFromRow(r); if(!w)return; if(!byWeek.has(w))byWeek.set(w,[]); byWeek.get(w).push(r);});
       byWeek.forEach((all,w)=>{
+        if (special === 'FLASHCUT') {
+          const line = all.filter(r => /FLASH[\s_-]*CUT/i.test(r.linea || ''));
+          if (!line.length) return;
+          let unidades = 0, minutos = 0, hcVariable = 0;
+          for (const row of line) {
+            const cantidad = nval(row.unidades) ?? 0;
+            unidades += cantidad;
+            for (const op of row.operaciones || []) {
+              if (/\bDESVIR(?:ADO|AR)\b/i.test(op.operacion || '')) continue;
+              minutos += cantidad * (nval(op.sam) ?? 0);
+              hcVariable += nval(op.hc) ?? 0;
+            }
+          }
+          const fijo = modeNumber(line.map(r => r.metadata?.hc_fijo_flashcut));
+          out.set(w, {unidades, sam:unidades ? minutos/unidades : null,
+            hcBalance:fijo === null ? null : hcVariable + fijo, horas:60});
+          return;
+        }
         if (special === 'CANTOS_GLOBAL') {
           const total=all.find(r=>normalizeLabel(r.linea)==='TOTAL') || null;
           const pre=all.find(r=>normalizeLabel(r.linea)==='PRE ENTINTADO') || null;
