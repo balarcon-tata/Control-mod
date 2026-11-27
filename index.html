@@ -1150,6 +1150,32 @@
           avgTd.textContent = rowAverageMetric(metric);
           tr.appendChild(avgTd);
           tbody.appendChild(tr);
+          if (stage.hcDetalle && metric.role === 'balance') {
+            tr.querySelectorAll('input').forEach(input => input.readOnly = true);
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.style.cssText = 'background:transparent;border:0;color:inherit;font:inherit;cursor:pointer;text-align:left;padding:0';
+            labelTd.replaceChildren(button);
+            const details = ['HC Estampado','HC Desbaste'].map((label,index) => {
+              const row = tbody.insertRow();
+              row.insertCell().textContent = label;
+              const values = stage.weeks.map(week => stage.hcDetalle[week]?.[index]);
+              for (const value of values) {
+                const cell = row.insertCell();
+                cell.style.textAlign = 'center';
+                cell.textContent = value ?? '—';
+              }
+              row.insertCell().textContent = rowAverageMetric({label, values:values.map(v=>v??'')});
+              return row;
+            });
+            function toggle(expanded) {
+              button.setAttribute('aria-expanded',String(expanded));
+              button.textContent = (expanded ? '▾ ' : '▸ ') + 'HC BALANCE';
+              details.forEach(row => row.style.display = expanded ? '' : 'none');
+            }
+            toggle(false);
+            button.onclick = () => toggle(button.getAttribute('aria-expanded') !== 'true');
+          }
         });
         table.appendChild(tbody);
         tableWrap.appendChild(table);
@@ -1963,6 +1989,15 @@
       if(!data?.ok) throw new Error(data?.error||'Respuesta inválida del Backend MOD');
       return data;
     }
+    async function leerHCDesbaste() {
+      const {data, error} = await supabaseMod.from('hc_actual_area').select('*').eq('area','DESBASTE').maybeSingle();
+      if (error || !data) return null;
+      for (const campo of ['cantidad_hc','cantidad_hc_actual','cantidad','hc','Cantidad de HC','cantidad de hc','Cantidad HC','cantidad HC']) {
+        const valor = nval(data[campo]);
+        if (valor !== null) return valor;
+      }
+      return null;
+    }
     async function importUniversalBackend(options={}) {
       setDbStatus('Leyendo Backend Universal MOD...', 'saving');
       const costoMetasPrevias = new Map((state.stages || []).map(stage => [normDbKey(stage.name), {
@@ -2009,6 +2044,9 @@
         let rows=Array.isArray(res.data)?res.data:[];
         if(def.line) rows=rows.filter(r=>normalizeLabel(r.linea)===normalizeLabel(def.line));
         const agg=aggregateRows(rows,def.special,!!def.line);
+        const esEstampado = def.name === 'ESTAMPADO';
+        const hcDesbaste = esEstampado ? await leerHCDesbaste().catch(()=>null) : null;
+        if (esEstampado) stage.hcDetalle = {};
         stage._backendStatus='ok'; stage._backendArea=def.backend; stage._backendUpdatedAt=res.updated_at||reg.data_updated_at||reg.last_seen_at||null;
         stage.weeks.forEach((wLabel,wi)=>{
           const w=weekNumberFromLabel(wLabel), d=agg.get(w); if(!d)return;
@@ -2020,7 +2058,13 @@
               : d.unidades;
           setMetric(stage,'UNIDADES',wi,roundVal(unidadesMostrar,0));
           setMetric(stage,'SAM PONDERADO',wi,roundVal(d.sam,4));
-          setMetric(stage,'HC BALANCE',wi,roundVal(d.hcBalance,2));
+          let hcTotal = d.hcBalance;
+          if (esEstampado) {
+            const estampado = roundVal(d.hcBalance,2);
+            stage.hcDetalle[wLabel] = [estampado, hcDesbaste];
+            hcTotal = hcDesbaste === null || estampado === '' ? null : estampado + hcDesbaste;
+          }
+          setMetric(stage,'HC BALANCE',wi,roundVal(hcTotal,2));
           setMetric(stage,'COSTO',wi,roundVal(d.costo,4));
           setMetric(stage,'HC ÓPTIMO',wi,roundVal(d.hcOptimo,2));
           setMetric(stage,'HORAS',wi,roundVal(d.horas,2));
