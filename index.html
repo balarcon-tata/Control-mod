@@ -1159,13 +1159,35 @@
             const details = ['HC Estampado','HC Desbaste'].map((label,index) => {
               const row = tbody.insertRow();
               row.insertCell().textContent = label;
-              const values = stage.weeks.map(week => stage.hcDetalle[week]?.[index]);
-              for (const value of values) {
-                const cell = row.insertCell();
-                cell.style.textAlign = 'center';
-                cell.textContent = value ?? '—';
-              }
-              row.insertCell().textContent = rowAverageMetric({label, values:values.map(v=>v??'')});
+              const values = stage.weeks.map(week => stage.hcDetalle[week]?.[index] ?? '');
+              const average = document.createElement('td');
+              values.forEach((value, i) => {
+                const week = stage.weeks[i];
+                const input = document.createElement('input');
+                input.className = 'cell';
+                input.type = 'number';
+                input.min = '0';
+                input.step = 'any';
+                input.placeholder = '—';
+                input.value = value;
+                input.setAttribute('aria-label', label + ', ' + week);
+                input.oninput = () => {
+                  if (!input.validity.valid) return;
+                  const next = input.value === '' ? null : input.valueAsNumber;
+                  stage.hcDetalle[week][index] = next;
+                  values[i] = next ?? '';
+                  const total = totalHCDetalle(stage.hcDetalle[week]);
+                  metric.values[i] = total;
+                  tr.cells[i+1].querySelector('input').value = total;
+                  average.textContent = rowAverageMetric({label, values});
+                  updateAverage(stageIndex, metricIndex);
+                  drawStageChart(stageIndex);
+                  saveManualOverride(stage.name, label, stage.hcClaves[week], next);
+                };
+                row.insertCell().appendChild(input);
+              });
+              average.textContent = rowAverageMetric({label, values});
+              row.appendChild(average);
               return row;
             });
             function toggle(expanded) {
@@ -1989,6 +2011,9 @@
       if(!data?.ok) throw new Error(data?.error||'Respuesta inválida del Backend MOD');
       return data;
     }
+    function totalHCDetalle(partes) {
+      return partes.some(v => nval(v) === null) ? '' : roundVal(Number(partes[0]) + Number(partes[1]),2);
+    }
     async function leerHCDesbaste() {
       const {data, error} = await supabaseMod.from('hc_actual_area').select('*').eq('area','DESBASTE').maybeSingle();
       if (error || !data) return null;
@@ -2046,7 +2071,24 @@
         const agg=aggregateRows(rows,def.special,!!def.line);
         const esEstampado = def.name === 'ESTAMPADO';
         const hcDesbaste = esEstampado ? await leerHCDesbaste().catch(()=>null) : null;
-        if (esEstampado) stage.hcDetalle = {};
+        if (esEstampado) {
+          stage.hcDetalle = {};
+          stage.hcClaves = {};
+          const overrides = loadManualOverrides();
+          stage.weeks.forEach((week,i) => {
+            const date = new Date();
+            date.setDate(date.getDate() + 11 - (date.getDay() || 7) + 7*i);
+            const period = date.getFullYear() + ' ' + week;
+            stage.hcClaves[week] = period;
+            const source = agg.get(weekNumberFromLabel(week));
+            const defaults = [source ? roundVal(source.hcBalance,2) : null, source ? hcDesbaste : null];
+            stage.hcDetalle[week] = ['HC Estampado','HC Desbaste'].map((label,k) => {
+              const key = [stage.name,label,period].map(v=>normalizeLabel(v)).join('|');
+              return Object.prototype.hasOwnProperty.call(overrides,key) ? overrides[key] : defaults[k];
+            });
+            setMetric(stage,'HC BALANCE',i,totalHCDetalle(stage.hcDetalle[week]));
+          });
+        }
         stage._backendStatus='ok'; stage._backendArea=def.backend; stage._backendUpdatedAt=res.updated_at||reg.data_updated_at||reg.last_seen_at||null;
         stage.weeks.forEach((wLabel,wi)=>{
           const w=weekNumberFromLabel(wLabel), d=agg.get(w); if(!d)return;
@@ -2058,13 +2100,7 @@
               : d.unidades;
           setMetric(stage,'UNIDADES',wi,roundVal(unidadesMostrar,0));
           setMetric(stage,'SAM PONDERADO',wi,roundVal(d.sam,4));
-          let hcTotal = d.hcBalance;
-          if (esEstampado) {
-            const estampado = roundVal(d.hcBalance,2);
-            stage.hcDetalle[wLabel] = [estampado, hcDesbaste];
-            hcTotal = hcDesbaste === null || estampado === '' ? null : estampado + hcDesbaste;
-          }
-          setMetric(stage,'HC BALANCE',wi,roundVal(hcTotal,2));
+          if (!esEstampado) setMetric(stage,'HC BALANCE',wi,roundVal(d.hcBalance,2));
           setMetric(stage,'COSTO',wi,roundVal(d.costo,4));
           setMetric(stage,'HC ÓPTIMO',wi,roundVal(d.hcOptimo,2));
           setMetric(stage,'HORAS',wi,roundVal(d.horas,2));
